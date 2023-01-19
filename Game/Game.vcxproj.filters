@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="system">
+      <UniqueIdentifier>{22dd8095-74f9-46df-81a1-36675a040b1f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="system\system.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameCamera.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Background.cpp" />
+    <ClCompile Include="MagicBall.cpp" />
+    <ClCompile Include="MushRoomMan.cpp" />
+    <ClCompile Include="StoneMonster.cpp" />
+    <ClCompile Include="MovingFloor.cpp" />
+    <ClCompile Include="SeesawFloor.cpp" />
+    <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="MovingFloorZ.cpp" />
+    <ClCompile Include="FireGimmic.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="CheckPoint.cpp" />
+    <ClCompile Include="MagicThunder.cpp" />
+    <ClCompile Include="Fade.cpp" />
+    <ClCompile Include="Title.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="system\system.h">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="GameCamera.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Background.h" />
+    <ClInclude Include="MagicBall.h" />
+    <ClInclude Include="MushRoomMan.h" />
+    <ClInclude Include="StoneMonster.h" />
+    <ClInclude Include="MovingFloor.h" />
+    <ClInclude Include="SeesawFloor.h" />
+    <ClInclude Include="Boss.h" />
+    <ClInclude Include="MovingFloorZ.h" />
+    <ClInclude Include="FireGimmic.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="CheckPoint.h" />
+    <ClInclude Include="MagicThunder.h" />
+    <ClInclude Include="Fade.h" />
+    <ClInclude Include="Title.h" />
+  </ItemGroup>
+</Project>

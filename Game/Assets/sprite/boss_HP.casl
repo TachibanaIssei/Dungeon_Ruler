@@ -1,0 +1,5 @@
+4
+18,boss_HP_background,47,../../Game/Assets/sprite/boss_HP_background.png,0.0,425.0,1920,1080,10,1.0,1.0,0.5,0.5,22,boss_HP_background.dds
+11,boss_HPwaku,40,../../Game/Assets/sprite/boss_HPwaku.png,0.0,425.0,1920,1080,12,1.0,1.0,0.5,0.5,15,boss_HPwaku.dds
+11,boss_HP_bar,40,../../Game/Assets/sprite/boss_HP_bar.png,0.0,425.0,898,46,11,1.0,1.0,0.5,0.5,15,boss_HP_bar.dds
+9,boss_name,38,../../Game/Assets/sprite/boss_name.png,0.0,495.00000000000006,1536,864,10,0.8,0.8,0.5,0.5,13,boss_name.dds
