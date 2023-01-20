@@ -141,7 +141,7 @@ bool Game::Start()
 
 	InitSky();
 
-	m_map = NewGO<Map>(0, "map");
+	m_map = NewGO<Map>(2, "map");
 
 	//ƒŒƒxƒ‹‚ğ\’z‚·‚é
 	m_levelRender.Init("Assets/level3D/level.tkl", [&](LevelObjectData& objData) {

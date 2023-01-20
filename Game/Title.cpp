@@ -55,7 +55,7 @@ void Title::Update()
 	{
 		if (!m_fade->IsFade())
 		{
-			NewGO<Game>(0, "game");
+			NewGO<Game>(1, "game");
 			DeleteGO(this);
 		}
 	}
