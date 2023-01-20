@@ -2,6 +2,7 @@
 
 class Player;
 class Map;
+class GameCamera;
 
 class StoneMonster : public IGameObject
 {
@@ -180,6 +181,11 @@ private:
 	/// <returns>変換前と変換後の差</returns>
 	Vector3 HPBerSend(Vector3 size, Vector3 scale);
 	/// <summary>
+	/// HPゲージの描画フラグ
+	/// </summary>
+	/// <returns>描画できる範囲にいるときtrue</returns>
+	bool DrawHP();
+	/// <summary>
 	/// マップの画像移動処理
 	/// </summary>
 	void MapMove();
@@ -196,8 +202,6 @@ private:
 	SpriteRender			m_HPBar;								//HPバー画像
 	SpriteRender			m_HPFrame;								//HP枠画像
 	SpriteRender			m_HPBack;								//HP背景画像
-	SpriteRender			m_nameA;								//名前A
-	SpriteRender			m_nameB;								//名前B
 	SpriteRender			m_stoneMapSprite;						//マップ表示
 
 
@@ -207,7 +211,6 @@ private:
 	Vector2					m_HPBerPos = Vector2::Zero;				//HPバーのポジション
 	Vector2					m_HPWindowPos = Vector2::Zero;			//HP枠のポジション
 	Vector2					m_HPBackPos = Vector2::Zero;			//HP背景のポジション
-	Vector2					m_namePos = Vector2::Zero;				//モンスターの名前ポジション
 
 	Vector3					m_position = Vector3::Zero;				//座標
 	Vector3					m_firstPosition = Vector3::Zero;		//スタート時の座標
@@ -224,6 +227,7 @@ private:
 	int						m_nameNumber = 0;						//名前表示の番号
 	Player*					m_player = nullptr;						//プレイヤー
 	Map*					m_map = nullptr;						//マップ
+	GameCamera*				m_gameCamera = nullptr;					//ゲームカメラ
 	float					m_chaseTimer = 0.0f;					//追跡タイマー
 	float					m_idleTimer = 0.0f;						//待機タイマー
 };

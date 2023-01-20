@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "Map.h"
 #include "MagicBall.h"
+#include "GameCamera.h"
 
 #include "collision/CollisionObject.h"
 #include "graphics/effect/EffectEmitter.h"
@@ -30,9 +31,6 @@ namespace {
 	const float HP_BER_HEIGHT = 22.0f;
 
 	const Vector3 HP_BER_SIZE = Vector3(HP_BER_WIDTH, HP_BER_HEIGHT, 0.0f);
-
-	const Vector3 NAME_A_POS = Vector3(-700.0f, 490.0f, 0.0f);
-	const Vector3 NAME_B_POS = Vector3(700.0f, 490.0f, 0.0f);
 
 	//const Vector2 PIVOT = Vector2(0.0f, 0.5f);
 
@@ -75,6 +73,7 @@ bool StoneMonster::Start()
 
 	m_player = FindGO<Player>("player");
 	m_map = FindGO<Map>("map");
+	m_gameCamera = FindGO<GameCamera>("gameCamera");
 
 	//エフェクトのロード
 	EffectEngine::GetInstance()->ResistEffect(4, u"Assets/effect/efk/cast_fire.efk");
@@ -93,15 +92,7 @@ bool StoneMonster::Start()
 
 	m_HPBack.Init("Assets/sprite/zako_HP_background.DDS", HP_WINDOW_WIDTH, HP_WINDOW_HEIGHT);
 
-	m_HPFrame.Init("Assets/sprite/zako_HP_waku.DDS", HP_WINDOW_WIDTH, HP_WINDOW_HEIGHT);
-
-	m_nameA.Init("Assets/sprite/stonemonster_A.dds", 768, 432);
-	m_nameA.SetPosition(NAME_A_POS);
-	m_nameB.Init("Assets/sprite/stonemonster_B.dds", 768, 432);
-	m_nameB.SetPosition(NAME_B_POS);
-
-	m_nameA.Update();
-	m_nameB.Update();
+	m_HPFrame.Init("Assets/sprite/HP_flame_stonemonster.DDS", HP_WINDOW_WIDTH, HP_WINDOW_HEIGHT);
 
 	//乱数を初期化
 	srand((unsigned)time(NULL));
@@ -454,15 +445,12 @@ void StoneMonster::HPBar()
 	m_HPBar.SetScale(scale);
 
 	Vector3 BerPosition = m_position;
-	BerPosition.y += 130.0f;
-	Vector3 OldBerPos = BerPosition;
-	OldBerPos.y += 30.0f;
+	BerPosition.y += 100.0f;
 
 	//座標を変換する
 	g_camera3D->CalcScreenPositionFromWorldPosition(m_HPBerPos, BerPosition);
 	g_camera3D->CalcScreenPositionFromWorldPosition(m_HPWindowPos, BerPosition);
 	g_camera3D->CalcScreenPositionFromWorldPosition(m_HPBackPos, BerPosition);
-	g_camera3D->CalcScreenPositionFromWorldPosition(m_namePos, OldBerPos);
 
 	//HPバー画像を左寄せに表示する
 	Vector3 BerSizeSubtraction = HPBerSend(HP_BER_SIZE, scale);	//画像の元の大きさ
@@ -471,14 +459,10 @@ void StoneMonster::HPBar()
 	m_HPBar.SetPosition(Vector3(m_HPBerPos.x, m_HPBerPos.y, 0.0f));
 	m_HPFrame.SetPosition(Vector3(m_HPWindowPos.x, m_HPWindowPos.y, 0.0f));
 	m_HPBack.SetPosition(Vector3(m_HPBackPos.x, m_HPBackPos.y, 0.0f));
-	m_nameA.SetPosition(Vector3(m_namePos.x, m_namePos.y, 0.0f));
-	m_nameB.SetPosition(Vector3(m_namePos.x, m_namePos.y, 0.0f));
 
 	m_HPBar.Update();
 	m_HPFrame.Update();
 	m_HPBack.Update();
-	m_nameA.Update();
-	m_nameB.Update();
 }
 
 Vector3 StoneMonster::HPBerSend(Vector3 size, Vector3 scale)
@@ -492,6 +476,28 @@ Vector3 StoneMonster::HPBerSend(Vector3 size, Vector3 scale)
 	BerSizeSubtraction.x /= 2.0f;
 
 	return BerSizeSubtraction;
+}
+
+bool StoneMonster::DrawHP()
+{
+	Vector3 toCameraTarget = m_gameCamera->GetTarget() - m_gameCamera->GetPosition();
+	Vector3 toMush = m_position - m_gameCamera->GetPosition();
+	toCameraTarget.y = 0.0f;
+	toMush.y = 0.0f;
+	toCameraTarget.Normalize();
+	toMush.Normalize();
+
+	float cos = Dot(toCameraTarget, toMush);
+	float angle = acos(cos);
+
+	if (fabsf(angle) < Math::DegToRad(45.0f))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 void StoneMonster::MapMove()
@@ -636,17 +642,11 @@ void StoneMonster::Render(RenderContext& rc)
 
 	if (m_player->GetSpriteFlag())
 	{
-		m_HPBack.Draw(rc);
-		m_HPBar.Draw(rc);
-		m_HPFrame.Draw(rc);
-
-		if (m_nameNumber == 1)
+		if (DrawHP())
 		{
-			//m_nameA.Draw(rc);
-		}
-		else if (m_nameNumber == 2)
-		{
-			//m_nameB.Draw(rc);
+			m_HPBack.Draw(rc);
+			m_HPBar.Draw(rc);
+			m_HPFrame.Draw(rc);
 		}
 	}
 }
