@@ -32,10 +32,6 @@ namespace {
 	
 	const Vector3 HP_BER_SIZE = Vector3(HP_BER_WIDTH, HP_BER_HEIGHT, 0.0f);
 
-	const Vector3 NAME_A_POS = Vector3(0.0f, 490.0f, 0.0f);
-	const Vector3 NAME_B_POS = Vector3(350.0f, 490.0f, 0.0f);
-	const Vector3 NAME_C_POS = Vector3(-350.0f, 490.0f, 0.0f);
-
 	const Vector2 PIVOT = Vector2(0.0f, 0.5f);
 
 	const int LOST_HP_ATTACK = 1;
@@ -97,18 +93,7 @@ bool MushRoomMan::Start()
 
 	m_HPBack.Init("Assets/sprite/zako_HP_background.DDS", HP_WINDOW_WIDTH, HP_WINDOW_HEIGHT);
 
-	m_HPFrame.Init("Assets/sprite/zako_HP_waku.DDS", HP_WINDOW_WIDTH, HP_WINDOW_HEIGHT);
-
-	m_nameA.Init("Assets/sprite/mushroom_A.dds", 768, 432);
-	m_nameA.SetPosition(NAME_A_POS);
-	m_nameB.Init("Assets/sprite/mushroom_B.dds", 768, 432);
-	m_nameB.SetPosition(NAME_B_POS);
-	m_nameC.Init("Assets/sprite/mushroom_C.dds", 768, 432);
-	m_nameC.SetPosition(NAME_C_POS);
-
-	m_nameA.Update();
-	m_nameB.Update();
-	m_nameC.Update();
+	m_HPFrame.Init("Assets/sprite/HP_flame_mushroom.DDS", HP_WINDOW_WIDTH, HP_WINDOW_HEIGHT);
 
 	m_player = FindGO<Player>("player");
 	m_map = FindGO<Map>("map");
@@ -508,14 +493,11 @@ void MushRoomMan::HPBar()
 
 	Vector3 BerPosition = m_position;
 	BerPosition.y += 130.0f;
-	Vector3 OldBerPos = BerPosition;
-	OldBerPos.y += 30.0f;
 
 	//座標を変換する
 	g_camera3D->CalcScreenPositionFromWorldPosition(m_HPBerPos, BerPosition);
 	g_camera3D->CalcScreenPositionFromWorldPosition(m_HPWindowPos, BerPosition);
 	g_camera3D->CalcScreenPositionFromWorldPosition(m_HPBackPos, BerPosition);
-	g_camera3D->CalcScreenPositionFromWorldPosition(m_namePos, OldBerPos);
 
 	//HPバー画像を左寄せに表示する
 	Vector3 BerSizeSubtraction = HPBerSend(HP_BER_SIZE,scale);	//画像の元の大きさ
@@ -524,16 +506,10 @@ void MushRoomMan::HPBar()
 	m_HPBar.SetPosition(Vector3(m_HPBerPos.x, m_HPBerPos.y, 0.0f));
 	m_HPFrame.SetPosition(Vector3(m_HPWindowPos.x, m_HPWindowPos.y, 0.0f));
 	m_HPBack.SetPosition(Vector3(m_HPBackPos.x, m_HPBackPos.y, 0.0f));
-	m_nameA.SetPosition(Vector3(m_namePos.x, m_namePos.y, 0.0f));
-	m_nameB.SetPosition(Vector3(m_namePos.x, m_namePos.y, 0.0f));
-	m_nameC.SetPosition(Vector3(m_namePos.x, m_namePos.y, 0.0f));
 
 	m_HPBar.Update();
 	m_HPFrame.Update();
 	m_HPBack.Update();
-	m_nameA.Update();
-	m_nameB.Update();
-	m_nameC.Update();
 }
 
 Vector3 MushRoomMan::HPBerSend(Vector3 size, Vector3 scale)
@@ -708,16 +684,6 @@ void MushRoomMan::Render(RenderContext& rc)
 			m_HPBack.Draw(rc);
 			m_HPBar.Draw(rc);
 			m_HPFrame.Draw(rc);
-
-			if (m_nameNumber == 1) {
-				//m_nameA.Draw(rc);
-			}
-			else if (m_nameNumber == 2) {
-				//m_nameB.Draw(rc);
-			}
-			else if (m_nameNumber == 3) {
-				//m_nameC.Draw(rc);
-			}
 		}
 	}
 }

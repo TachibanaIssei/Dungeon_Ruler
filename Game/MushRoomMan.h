@@ -192,6 +192,10 @@ private:
 	/// <returns>変換前と変換後の差</returns>
 	Vector3 HPBerSend(Vector3 size, Vector3 scale);
 	
+	/// <summary>
+	/// HPゲージの描画フラグ
+	/// </summary>
+	/// <returns>描画できる範囲にあるときtrue</returns>
 	bool DrawHP();
 
 	/// <summary>
@@ -211,9 +215,6 @@ private:
 	SpriteRender		m_HPBar;		//HPバー画像
 	SpriteRender		m_HPFrame;		//HP枠画像
 	SpriteRender		m_HPBack;		//HP背景画像
-	SpriteRender		m_nameA;		//名前A
-	SpriteRender		m_nameB;		//名前B
-	SpriteRender		m_nameC;		//名前C
 	SpriteRender		m_mushMapSprite;//マップ表示
 
 	AnimationClip		m_animationClips[enAnimationClip_Num];	//アニメーションクリップ
@@ -222,7 +223,6 @@ private:
 	Vector2				m_HPBerPos = Vector2::Zero;				//HPバーのポジション
 	Vector2				m_HPWindowPos = Vector2::Zero;			//HP枠のポジション
 	Vector2				m_HPBackPos = Vector2::Zero;			//HP背景のポジション
-	Vector2				m_namePos = Vector2::Zero;				//モンスターの名前ポジション
 
 	Vector3				m_position = Vector3::Zero;				//座標
 	Vector3				m_firstPosition = Vector3::Zero;		//スタート時の座標
