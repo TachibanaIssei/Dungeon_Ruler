@@ -145,7 +145,6 @@ bool Player::Start()
 	g_soundEngine->ResistWaveFileBank(17, "Assets/sound/magic_huhatu.wav");
 
 	m_game = FindGO<Game>("game");
-	m_fade = FindGO<Fade>("fade");
 
 	m_movingFloorX = FindGO<MovingFloor>("movingfloorX");
 	m_checkPoint = FindGO<CheckPoint>("checkPoint");
@@ -914,11 +913,14 @@ void Player::ProcessDownStateTransition()
 	//ダウンアニメーションの再生がおわったら
 	if (m_modelRender.IsPlayingAnimation() == false)
 	{
-		//リスポーンさせる
-		Game* game = FindGO<Game>("game");
-		Fade* fade = FindGO<Fade>("fade");
-		fade->StartFadeOut();
-		game->SetisWaitRespown();
+		m_game->SetGameState(m_game->enGameState_PlayerDead);
+		if (g_pad[0]->IsTrigger(enButtonA))
+		{
+			//リスポーンさせる
+			Fade* fade = FindGO<Fade>("fade");
+			fade->StartFadeOut();
+			m_game->SetisWaitRespown();
+		}
 	}
 }
 

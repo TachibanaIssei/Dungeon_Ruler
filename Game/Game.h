@@ -20,6 +20,7 @@ public:
 	enum EnGameState
 	{
 		enGameState_DuringGamePlay,		//ゲームプレイ中
+		enGameState_PlayerDead,			//プレイヤー死亡
 		enGameState_GameClear,			//ゲームクリア
 		enGameState_GameClear_Idle		//ゲームクリア(待機中)
 	};
@@ -72,6 +73,15 @@ public:
 	}
 
 	/// <summary>
+	/// ゲームステートを設定する
+	/// </summary>
+	/// <param name="state">ステート</param>
+	void SetGameState(EnGameState state)
+	{
+		m_gameState = state;
+	}
+
+	/// <summary>
 	/// クリアBGMに変える
 	/// </summary>
 	void ChangeClearBGM();
@@ -98,6 +108,7 @@ private:
 	SoundSource* m_playBGM;
 	SoundSource* m_clearBGM;
 
+	SpriteRender			m_deadSprite;	//プレイヤー死亡画像
 	SpriteRender			m_attackIcon;	//攻撃アイコン
 	SpriteRender			m_magicIcon;	//魔法アイコン
 	SpriteRender			m_buttonBIcon;	//Bボタンアイコン

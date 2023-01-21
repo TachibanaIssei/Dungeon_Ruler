@@ -33,6 +33,9 @@ namespace
 	const Vector3 GAMECLEAR_POS = Vector3(0.0f,380.0f,0.0f);
 	const Vector3 PRESSABUTTON_POS = Vector3(0.0f, -400.0f, 0.0f);
 
+	//プレイヤー死亡画像座標
+	const Vector3 DEAD_SPRITE_POS = Vector3(0.0f, 300.0f, 0.0f);
+
 	//マッシュルームのHP画像座標
 	const Vector3 MUSH_1_HP_SPRITE_POS = Vector3(0.0f,430.0f,0.0f);
 	const Vector3 MUSH_2_HP_SPRITE_POS = Vector3(350.0f,430.0f,0.0f);
@@ -72,8 +75,11 @@ Game::~Game()
 	DeleteGO(m_player);
 	DeleteGO(m_backGround);
 	DeleteGO(m_movingFloorX);
-	DeleteGO(m_playBGM);
 
+	if (m_playBGM->IsPlaying())
+	{
+		DeleteGO(m_playBGM);
+	}
 	if (m_clearBGM->IsPlaying())
 	{
 		m_clearBGM->Stop();
@@ -313,6 +319,9 @@ bool Game::Start()
 	
 
 	//画像を読み込む
+	m_deadSprite.Init("Assets/sprite/YouDead.dds", 1290.0, 420.0);
+	m_deadSprite.SetPosition(DEAD_SPRITE_POS);
+
 	m_attackIcon.Init("Assets/sprite/weapons_02.dds", 153.6, 153.6);
 	m_attackIcon.SetPosition(ATTACK_ICON_POS);
 
@@ -356,6 +365,7 @@ bool Game::Start()
 	m_clearBGM->SetVolume(CLEAR_BGM_VOLUME);
 
 	//画像の更新処理
+	m_deadSprite.Update();
 	m_attackIcon.Update();
 	m_magicIcon.Update();
 	m_buttonBIcon.Update();
@@ -490,6 +500,12 @@ void Game::Render(RenderContext& rc)
 		else if (m_player->GetMokutekiFlag() == 3)
 		{
 			m_mokuteki_3.Draw(rc);
+		}
+	}
+	if (m_gameState == enGameState_PlayerDead)
+	{
+		if (!m_fade->IsFade()) {
+			m_deadSprite.Draw(rc);
 		}
 	}
 }
