@@ -307,7 +307,6 @@ bool Game::Start()
 
 	m_gameCamera = NewGO<GameCamera>(2, "gameCamera");
 	m_checkPoint = NewGO<CheckPoint>(0, "checkPoint");
-	
 
 	//画像を読み込む
 	m_deadSprite.Init("Assets/sprite/YouDead.dds", 1290.0, 420.0);
@@ -369,6 +368,10 @@ bool Game::Start()
 	m_mokuteki_3.Update();
 
 	m_fade = FindGO<Fade>("fade");
+
+	//Fadeのポインタをマップのm_fadeに設定
+	m_map->SetFadeAddress(m_fade);
+
 	m_fade->StartFadeIn();
 
 	m_playBGM->Play(true);
@@ -474,23 +477,26 @@ void Game::Render(RenderContext& rc)
 
 	if (m_player->GetSpriteFlag())
 	{
-		m_attackIcon.Draw(rc);
-		m_magicIcon.Draw(rc);
-		m_buttonBIcon.Draw(rc);
-		m_buttonXIcon.Draw(rc);
-		m_mokuteki.Draw(rc);
+		if (!m_fade->IsFade())
+		{
+			m_attackIcon.Draw(rc);
+			m_magicIcon.Draw(rc);
+			m_buttonBIcon.Draw(rc);
+			m_buttonXIcon.Draw(rc);
+			m_mokuteki.Draw(rc);
 
-		if (m_player->GetMokutekiFlag() == 1)
-		{
-			m_mokuteki_1.Draw(rc);
-		}
-		else if (m_player->GetMokutekiFlag() == 2)
-		{
-			m_mokuteki_2.Draw(rc);
-		}
-		else if (m_player->GetMokutekiFlag() == 3)
-		{
-			m_mokuteki_3.Draw(rc);
+			if (m_player->GetMokutekiFlag() == 1)
+			{
+				m_mokuteki_1.Draw(rc);
+			}
+			else if (m_player->GetMokutekiFlag() == 2)
+			{
+				m_mokuteki_2.Draw(rc);
+			}
+			else if (m_player->GetMokutekiFlag() == 3)
+			{
+				m_mokuteki_3.Draw(rc);
+			}
 		}
 	}
 	if (m_gameState == enGameState_PlayerDead)

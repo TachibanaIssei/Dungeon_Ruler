@@ -9,6 +9,7 @@
 #include "SeesawFloor.h"
 #include "MovingFloor.h"
 #include "MovingFloorZ.h"
+#include "Fade.h"
 
 namespace
 {
@@ -144,66 +145,69 @@ void Map::Render(RenderContext& rc)
 {
 	if (m_player->GetSpriteFlag())
 	{
-		//マップの背景
-		m_spriteRender.Draw(rc);
-
-		//マッシュルーム
-		const auto& mushrooms = FindGOs<MushRoomMan>("mushroomman");
-		const int mushSize = mushrooms.size();
-
-		for (int i = 0; i < mushSize; i++)
+		if (!m_fade->IsFade())
 		{
-			mushrooms[i]->MushMap(rc);
+			//マップの背景
+			m_spriteRender.Draw(rc);
+
+			//マッシュルーム
+			const auto& mushrooms = FindGOs<MushRoomMan>("mushroomman");
+			const int mushSize = mushrooms.size();
+
+			for (int i = 0; i < mushSize; i++)
+			{
+				mushrooms[i]->MushMap(rc);
+			}
+
+			//ストーンモンスター
+			const auto& stonemonsters = FindGOs<StoneMonster>("stonemonster");
+			const int stoneSize = stonemonsters.size();
+
+			for (int i = 0; i < stoneSize; i++)
+			{
+				stonemonsters[i]->StoneMap(rc);
+			}
+
+			//ボス
+			if (m_isImage)
+			{
+				m_bossSprite.Draw(rc);
+			}
+
+			//炎ギミック
+			const auto& fireGimmics = FindGOs<FireGimmic>("firegimmic");
+			const int fireGimmicSize = fireGimmics.size();
+
+			for (int i = 0; i < fireGimmicSize; i++)
+			{
+				fireGimmics[i]->FireGimmicMap(rc);
+			}
+
+			//回転する床ギミック
+			const auto& seesawFloors = FindGOs<SeesawFloor>("seesawfloor");
+			const int seesawFloorSize = seesawFloors.size();
+
+			for (int i = 0; i < seesawFloorSize; i++)
+			{
+				seesawFloors[i]->SeeasawMap(rc);
+			}
+
+			//X軸に動く床
+			MovingFloor* movingFloorX = FindGO<MovingFloor>("movingfloorX");
+			movingFloorX->FloorXMap(rc);
+
+			//Z軸に動く床
+			const auto& movingFloorZs = FindGOs<MovingFloorZ>("movingfloorZ");
+			const int movingFloorZSize = movingFloorZs.size();
+
+			for (int i = 0; i < movingFloorZSize; i++)
+			{
+				movingFloorZs[i]->FloorZMap(rc);
+			}
+			//プレイヤー
+			m_playerSprite.Draw(rc);
+			//マップの枠
+			m_mapFrame.Draw(rc);
 		}
-
-		//ストーンモンスター
-		const auto& stonemonsters = FindGOs<StoneMonster>("stonemonster");
-		const int stoneSize = stonemonsters.size();
-
-		for (int i = 0; i < stoneSize; i++)
-		{
-			stonemonsters[i]->StoneMap(rc);
-		}
-
-		//ボス
-		if (m_isImage)
-		{
-			m_bossSprite.Draw(rc);
-		}
-
-		//炎ギミック
-		const auto& fireGimmics = FindGOs<FireGimmic>("firegimmic");
-		const int fireGimmicSize = fireGimmics.size();
-
-		for (int i = 0; i < fireGimmicSize; i++)
-		{
-			fireGimmics[i]->FireGimmicMap(rc);
-		}
-
-		//回転する床ギミック
-		const auto& seesawFloors = FindGOs<SeesawFloor>("seesawfloor");
-		const int seesawFloorSize = seesawFloors.size();
-
-		for (int i = 0; i < seesawFloorSize; i++)
-		{
-			seesawFloors[i]->SeeasawMap(rc);
-		}
-
-		//X軸に動く床
-		MovingFloor* movingFloorX = FindGO<MovingFloor>("movingfloorX");
-		movingFloorX->FloorXMap(rc);
-
-		//Z軸に動く床
-		const auto& movingFloorZs = FindGOs<MovingFloorZ>("movingfloorZ");
-		const int movingFloorZSize = movingFloorZs.size();
-
-		for (int i = 0; i < movingFloorZSize; i++)
-		{
-			movingFloorZs[i]->FloorZMap(rc);
-		}
-		//プレイヤー
-		m_playerSprite.Draw(rc);
-		//マップの枠
-		m_mapFrame.Draw(rc);
 	}
 }

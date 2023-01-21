@@ -4,6 +4,7 @@ class Player;
 class MushRoomMan;
 class StoneMonster;
 class Boss;
+class Fade;
 
 class Map : public IGameObject
 {
@@ -32,6 +33,15 @@ public:
 	/// <returns></returns>
 	const bool WorldPositionConvertToMapPosition(Vector3 worldCenterPosition, Vector3 worldPosition, Vector3& mapPosition);
 
+	/// <summary>
+	/// Fadeクラスのポインタを設定する
+	/// </summary>
+	/// <param name="fade">ポインタ</param>
+	void SetFadeAddress(Fade* fade)
+	{
+		m_fade = fade;
+	}
+
 private:
 	void PlayerMap();
 	void BossMap();
@@ -45,6 +55,7 @@ private:
 
 	Player*			m_player = nullptr;
 	Boss*			m_boss = nullptr;
+	Fade*			m_fade = nullptr;
 
 	bool	m_isImage = false;
 };
