@@ -144,8 +144,8 @@ void Map::Render(RenderContext& rc)
 {
 	if (m_player->GetSpriteFlag())
 	{
+		//マップの背景
 		m_spriteRender.Draw(rc);
-		m_playerSprite.Draw(rc);
 
 		//マッシュルーム
 		const auto& mushrooms = FindGOs<MushRoomMan>("mushroomman");
@@ -201,7 +201,8 @@ void Map::Render(RenderContext& rc)
 		{
 			movingFloorZs[i]->FloorZMap(rc);
 		}
-
+		//プレイヤー
+		m_playerSprite.Draw(rc);
 		//マップの枠
 		m_mapFrame.Draw(rc);
 	}
