@@ -75,16 +75,7 @@ Game::~Game()
 	DeleteGO(m_player);
 	DeleteGO(m_backGround);
 	DeleteGO(m_movingFloorX);
-
-	if (m_playBGM->IsPlaying())
-	{
-		DeleteGO(m_playBGM);
-	}
-	if (m_clearBGM->IsPlaying())
-	{
-		m_clearBGM->Stop();
-	}
-
+	DeleteGO(m_playBGM);
 	DeleteGO(m_clearBGM);
 
 	//‰ŠƒMƒ~ƒbƒN‚Ìíœ
