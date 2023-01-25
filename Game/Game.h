@@ -108,17 +108,19 @@ private:
 	SoundSource* m_playBGM;
 	SoundSource* m_clearBGM;
 
-	SpriteRender			m_deadSprite;	//プレイヤー死亡画像
-	SpriteRender			m_attackIcon;	//攻撃アイコン
-	SpriteRender			m_magicIcon;	//魔法アイコン
-	SpriteRender			m_buttonBIcon;	//Bボタンアイコン
-	SpriteRender			m_buttonXIcon;	//Xボタンアイコン
-	SpriteRender			m_gameClear;	//ゲームクリア
-	SpriteRender			m_pressAbutton;	//PRESS A BUTTON
-	SpriteRender			m_mokuteki;		//目的画像
-	SpriteRender			m_mokuteki_1;	//目的1画像
-	SpriteRender			m_mokuteki_2;	//目的2画像
-	SpriteRender			m_mokuteki_3;	//目的3画像
+	SpriteRender			m_deadSprite;		//プレイヤー死亡画像
+	SpriteRender			m_continueSprite;	//コンティニュー画像
+	SpriteRender			m_deadBackGround;	//死亡時の背景画像
+	SpriteRender			m_attackIcon;		//攻撃アイコン
+	SpriteRender			m_magicIcon;		//魔法アイコン
+	SpriteRender			m_buttonBIcon;		//Bボタンアイコン
+	SpriteRender			m_buttonXIcon;		//Xボタンアイコン
+	SpriteRender			m_gameClear;		//ゲームクリア
+	SpriteRender			m_pressAbutton;		//PRESS A BUTTON
+	SpriteRender			m_mokuteki;			//目的画像
+	SpriteRender			m_mokuteki_1;		//目的1画像
+	SpriteRender			m_mokuteki_2;		//目的2画像
+	SpriteRender			m_mokuteki_3;		//目的3画像
 
 
 	EnGameState m_gameState = enGameState_DuringGamePlay;	//ゲームステート
@@ -127,14 +129,16 @@ private:
 	std::vector<SeesawFloor*>	m_seesawFloorVector;		//回転する床
 	std::vector<MovingFloorZ*>	m_movingFloorZVector;		//Z軸に移動する床
 
-	bool					m_isWaitFadeout = false;		//フェード待ち
-	bool					m_isWaitRespown = false;		//リスポーン待ち
-	bool					m_gameClearSpriteFlag = false;	//ゲームクリア画像の表示フラグ
-	int						m_numEnemy = 0;					//敵の数
-	int						m_numDefeatedEnemy = 0;			//倒した敵の数
-	float					m_gameClearAlpha = 0.0f;		//ゲームクリア画像のアルファ値
-	float					m_pressAbuttonAlpha = 0.0f;		//PRESS A BUTTON画像のアルファ値
-	float					m_deadSpriteAlpha = 0.0f;		//プレイヤー死亡画像のアルファ値
+	bool					m_isWaitFadeout			= false;	//フェード待ち
+	bool					m_isWaitRespown			= false;	//リスポーン待ち
+	bool					m_gameClearSpriteFlag	= false;	//ゲームクリア画像の表示フラグ
+	int						m_numEnemy				= 0;		//敵の数
+	int						m_numDefeatedEnemy		= 0;		//倒した敵の数
+	float					m_gameClearAlpha		= 0.0f;		//ゲームクリア画像のアルファ値
+	float					m_pressAbuttonAlpha		= 0.0f;		//PRESS A BUTTON画像のアルファ値
+	float					m_deadSpriteAlpha		= 0.0f;		//プレイヤー死亡画像のアルファ値
+	float					m_continueSpriteAlpha	= 0.0f;		//コンティニュー画像のアルファ値
+	float					m_deadBackGroundAlpha	= 0.0f;		//死亡時の背景画像のアルファ値
 };
 
 /*

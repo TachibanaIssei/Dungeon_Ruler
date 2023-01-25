@@ -35,6 +35,7 @@ namespace
 
 	//プレイヤー死亡画像座標
 	const Vector3 DEAD_SPRITE_POS = Vector3(0.0f, 300.0f, 0.0f);
+	const Vector3 CONTINUE_SPRITE_POS = Vector3(0.0f, -300.0f, 0.0f);
 
 	//マッシュルームのHP画像座標
 	const Vector3 MUSH_1_HP_SPRITE_POS = Vector3(0.0f,430.0f,0.0f);
@@ -312,6 +313,12 @@ bool Game::Start()
 	m_deadSprite.Init("Assets/sprite/YouDead.dds", 1290.0, 420.0);
 	m_deadSprite.SetPosition(DEAD_SPRITE_POS);
 
+	m_continueSprite.Init("Assets/sprite/continue.dds", 780.0, 360.0);
+	m_continueSprite.SetPosition(CONTINUE_SPRITE_POS);
+
+	m_deadBackGround.Init("Assets/sprite/dead_background.DDS", 1920.0, 1080.0);
+	m_deadBackGround.SetPosition(Vector3(0.0f, 0.0f, 0.0f));
+
 	m_attackIcon.Init("Assets/sprite/weapons_02.dds", 153.6, 153.6);
 	m_attackIcon.SetPosition(ATTACK_ICON_POS);
 
@@ -417,8 +424,10 @@ void Game::NotifyReStart()
 		m_gameCamera->ReStart();
 		m_gameState = enGameState_DuringGamePlay;
 
-		//死亡画像のアルファ値をリセット
-		m_deadSpriteAlpha = 0.0f;
+		//アルファ値をリセット
+		m_deadSpriteAlpha		= 0.0f;
+		m_deadBackGroundAlpha	= 0.0f;
+		g_renderingEngine->GetDeferredLightingCB().m_grayscale = 0.0f;
 
 		m_fade->StartFadeIn();
 		m_isWaitRespown = false;
@@ -453,6 +462,23 @@ void Game::Update()
 
 	if (m_gameState == enGameState_PlayerDead)
 	{
+		if (g_renderingEngine->GetDeferredLightingCB().m_grayscale >= 1.0f)
+		{
+			g_renderingEngine->GetDeferredLightingCB().m_grayscale = 1.0f;
+		}
+		else
+		{
+			g_renderingEngine->GetDeferredLightingCB().m_grayscale += g_gameTime->GetFrameDeltaTime() * 1.2f;
+		}
+
+		if (m_deadBackGroundAlpha >= 1.0f)
+		{
+			m_deadBackGroundAlpha = 1.0f;
+		}
+		else {
+			m_deadBackGroundAlpha += g_gameTime->GetFrameDeltaTime() * 1.2f;
+		}
+
 		if (m_deadSpriteAlpha >= 1.0f)
 		{
 			m_deadSpriteAlpha = 1.0f;
@@ -461,6 +487,7 @@ void Game::Update()
 		{
 			m_deadSpriteAlpha += g_gameTime->GetFrameDeltaTime() * 1.2f;
 		}
+		m_continueSpriteAlpha += g_gameTime->GetFrameDeltaTime() * 1.2f;
 	}
 
 	if (m_gameClearSpriteFlag)
@@ -472,14 +499,18 @@ void Game::Update()
 		else {
 			m_gameClearAlpha += g_gameTime->GetFrameDeltaTime() * 1.2f;
 		}
-
 		m_pressAbuttonAlpha += g_gameTime->GetFrameDeltaTime() * 1.2f;
 	}
 
+	m_deadBackGround.SetMulColor(Vector4(1.0f, 1.0f, 1.0f, m_deadBackGroundAlpha));
 	m_deadSprite.SetMulColor(Vector4(1.0f, 1.0f, 1.0f, m_deadSpriteAlpha));
+	m_continueSprite.SetMulColor(Vector4(1.0f, 1.0f, 1.0f, fabsf(sinf(m_continueSpriteAlpha))));
 	m_gameClear.SetMulColor(Vector4(1.0f, 1.0f, 1.0f, m_gameClearAlpha));
 	m_pressAbutton.SetMulColor(Vector4(1.0f, 1.0f, 1.0f, fabsf(sinf(m_pressAbuttonAlpha))));
+
+	m_deadBackGround.Update();
 	m_deadSprite.Update();
+	m_continueSprite.Update();
 	m_gameClear.Update();
 	m_pressAbutton.Update();
 }
@@ -519,7 +550,9 @@ void Game::Render(RenderContext& rc)
 	if (m_gameState == enGameState_PlayerDead)
 	{
 		if (!m_fade->IsFade()) {
+			//m_deadBackGround.Draw(rc);
 			m_deadSprite.Draw(rc);
+			m_continueSprite.Draw(rc);
 		}
 	}
 }

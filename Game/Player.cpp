@@ -18,7 +18,7 @@
 
 namespace
 {
-	const int PLAYER_MAXHP = 100;	//プレイヤーの最大HP
+	const int PLAYER_MAXHP = 1;	//プレイヤーの最大HP
 	const int PLAYER_MAXMP = 100;	//プレイヤーの最大MP
 	const int PLAYER_LOSTMP = 33;	//魔法を使ったときに減少するMP
 	const int PLAYER_HEALMP = 5;	//MPの自動回復
@@ -916,6 +916,11 @@ void Player::ProcessDownStateTransition()
 		m_game->SetGameState(m_game->enGameState_PlayerDead);
 		if (g_pad[0]->IsTrigger(enButtonA))
 		{
+			SoundSource* se = NewGO<SoundSource>(0);
+			se->Init(16);
+			se->SetVolume(SE_VOLUME);
+			se->Play(false);
+
 			//リスポーンさせる
 			Fade* fade = FindGO<Fade>("fade");
 			fade->StartFadeOut();

@@ -80,6 +80,8 @@ namespace nsK2Engine {
             float m_iblLuminance;       // IBLの明るさ。
             int m_isIBL;                // IBLを行う。
             int m_isEnableRaytracing;   // レイトレが行われている。
+            float m_grayscale = 0.0f; //グレースケール
+
         };
         /// <summary>
         /// レイトレ用のライトデータ。

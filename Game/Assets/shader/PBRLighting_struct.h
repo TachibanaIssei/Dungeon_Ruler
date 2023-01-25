@@ -56,5 +56,6 @@ struct LightCB{
     float iblIntencity;     // IBLの強度。
     int isIBL;              // IBLを行う。
     int isEnableRaytracing; // レイトレが有効。
+    float grayscale;
 };
 #endif // _PBRLIGHTING_STRUCT_H_

@@ -401,6 +401,15 @@ float4 PSMainCore(PSInput In, uniform int isSoftShadow)
    
     float4 finalColor = 1.0f;
     finalColor.xyz = lig;
+    
+    
+    float Y = finalColor.r * 0.29891f + finalColor.g * 0.58661f + finalColor.b * 0.11448f;
+    float fullcolor = 1.0f - light.grayscale;
+    
+    finalColor.r = (finalColor.r * fullcolor) + (Y * light.grayscale);
+    finalColor.g = (finalColor.g * fullcolor) + (Y * light.grayscale);
+    finalColor.b = (finalColor.b * fullcolor) + (Y * light.grayscale);
+    
     return finalColor;
 }
 float4 PSMainSoftShadow(PSInput In) : SV_Target0
