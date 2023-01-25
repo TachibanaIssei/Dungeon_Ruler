@@ -134,6 +134,7 @@ private:
 	int						m_numDefeatedEnemy = 0;			//倒した敵の数
 	float					m_gameClearAlpha = 0.0f;		//ゲームクリア画像のアルファ値
 	float					m_pressAbuttonAlpha = 0.0f;		//PRESS A BUTTON画像のアルファ値
+	float					m_deadSpriteAlpha = 0.0f;		//プレイヤー死亡画像のアルファ値
 };
 
 /*

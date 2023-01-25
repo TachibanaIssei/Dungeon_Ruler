@@ -417,6 +417,9 @@ void Game::NotifyReStart()
 		m_gameCamera->ReStart();
 		m_gameState = enGameState_DuringGamePlay;
 
+		//死亡画像のアルファ値をリセット
+		m_deadSpriteAlpha = 0.0f;
+
 		m_fade->StartFadeIn();
 		m_isWaitRespown = false;
 	}
@@ -448,6 +451,18 @@ void Game::Update()
 		NotifyReStart();
 	}
 
+	if (m_gameState == enGameState_PlayerDead)
+	{
+		if (m_deadSpriteAlpha >= 1.0f)
+		{
+			m_deadSpriteAlpha = 1.0f;
+		}
+		else
+		{
+			m_deadSpriteAlpha += g_gameTime->GetFrameDeltaTime() * 1.2f;
+		}
+	}
+
 	if (m_gameClearSpriteFlag)
 	{
 		if (m_gameClearAlpha >= 1.0f)
@@ -461,8 +476,10 @@ void Game::Update()
 		m_pressAbuttonAlpha += g_gameTime->GetFrameDeltaTime() * 1.2f;
 	}
 
+	m_deadSprite.SetMulColor(Vector4(1.0f, 1.0f, 1.0f, m_deadSpriteAlpha));
 	m_gameClear.SetMulColor(Vector4(1.0f, 1.0f, 1.0f, m_gameClearAlpha));
 	m_pressAbutton.SetMulColor(Vector4(1.0f, 1.0f, 1.0f, fabsf(sinf(m_pressAbuttonAlpha))));
+	m_deadSprite.Update();
 	m_gameClear.Update();
 	m_pressAbutton.Update();
 }
