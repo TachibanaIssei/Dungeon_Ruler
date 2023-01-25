@@ -143,6 +143,7 @@ bool Player::Start()
 	g_soundEngine->ResistWaveFileBank(14, "Assets/sound/otoko_voice_guha.wav");
 	g_soundEngine->ResistWaveFileBank(16, "Assets/sound/button_sound_piroron.wav");
 	g_soundEngine->ResistWaveFileBank(17, "Assets/sound/magic_huhatu.wav");
+	g_soundEngine->ResistWaveFileBank(19, "Assets/sound/continue.wav");
 
 	m_game = FindGO<Game>("game");
 
@@ -917,7 +918,7 @@ void Player::ProcessDownStateTransition()
 		if (g_pad[0]->IsTrigger(enButtonA))
 		{
 			SoundSource* se = NewGO<SoundSource>(0);
-			se->Init(16);
+			se->Init(19);
 			se->SetVolume(SE_VOLUME);
 			se->Play(false);
 
