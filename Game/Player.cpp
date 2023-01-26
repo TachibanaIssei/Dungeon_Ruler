@@ -18,7 +18,7 @@
 
 namespace
 {
-	const int PLAYER_MAXHP = 1;	//プレイヤーの最大HP
+	const int PLAYER_MAXHP = 100;	//プレイヤーの最大HP
 	const int PLAYER_MAXMP = 100;	//プレイヤーの最大MP
 	const int PLAYER_LOSTMP = 33;	//魔法を使ったときに減少するMP
 	const int PLAYER_HEALMP = 5;	//MPの自動回復
