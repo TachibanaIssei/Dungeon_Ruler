@@ -1,7 +1,7 @@
 # Dungeon_Ruler
 ## 1. ゲーム概要
 ---
-* __<font size="3" color="white">使用ゲームエンジン</font>__<br>
+* __<font size="4" color="white">使用ゲームエンジン</font>__<br>
   <font size="2">学校内製のゲームエンジンを使用</font>
 * __使用ツール__
   * Visual&thinsp;Studio 2022
