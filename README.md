@@ -2,7 +2,6 @@
 河原電子ビジネス専門学校<br>
 1年 橘 一生
 ## 1. ゲーム概要
----
 ▼第11回全国専門学校ゲームコンペティション応募動画<br>
 [![](https://img.youtube.com/vi/IK2ury61ALo/0.jpg)](https://www.youtube.com/watch?v=IK2ury61ALo)
 
@@ -28,4 +27,3 @@
 * __制作人数__<br>
   1人
 ## 2. 操作説明
-***
