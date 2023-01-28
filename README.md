@@ -8,6 +8,7 @@
 
   1. [ゲーム概要](#1-ゲーム概要)
   2. [操作説明](#2-操作説明)
+  3. [ソースコード](#3-ソースコード)
 
 </details>
 
@@ -47,7 +48,10 @@
 |ダッシュ|Lスティック+RB|
 |カメラ操作|Rスティック|
 
-## __3. 作成したソースコード__
+## __3. ソースコード__
+<details>
+  <summary>作成したソースコード</summary>
+
   * Background.cpp
     * Background.h
   * Boss.cpp
@@ -82,3 +86,10 @@
     * StoneMonster.h
   * Title.cpp
     * Title.h
+</details>
+<details>
+<summary>改造したソースコード</summary>
+
+  * 
+
+</details>
