@@ -1,4 +1,4 @@
-# Dungeon_Ruler
+# Dungeon Ruler
 ### 作成者
 河原電子ビジネス専門学校<br>
 1年 橘 一生
@@ -88,8 +88,11 @@
     * Title.h
 </details>
 <details>
-<summary>改造したソースコード</summary>
+<summary>追記したソースコード</summary>
 
-  * 
+  * PhysicsStaticObject.h
+  * RenderingEngine.h
+  * DeferredLighting.fx
+  * PBRLighting_struct.h
 
 </details>
