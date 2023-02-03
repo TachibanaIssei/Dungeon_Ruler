@@ -91,11 +91,19 @@
 <summary>追記したソースコード</summary>
 
   * PhysicsStaticObject.h
+    * SetRotation関数を追加
   * RenderingEngine.h
+    * m_grayscale変数を追加
   * DeferredLighting.fx
+    * 406行目～412行目のグレースケールの処理を追加
   * PBRLighting_struct.h
+    * 59行目のgrayscale変数を追加
 
 </details>
 
 ## __4. ステージ__
-  
+  ステージは以下の3つで構成されています。
+ ![ステージ構成](PortfolioImage/stage.png "ステージ構成")
+ ① 雑魚敵との戦闘
+ ② ステージギミックのあるアスレチックコース
+ ③ ボス戦
