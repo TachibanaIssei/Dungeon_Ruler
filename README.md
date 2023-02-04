@@ -120,24 +120,16 @@
 [![ギミック動く床](https://img.youtube.com/vi/U87YqJSWFL8/0.jpg)](https://www.youtube.com/watch?v=U87YqJSWFL8)
 </details>
 
+---
   ### 2. 氷の床<br>
   *  傾く床の上に乗ると傾きによってプレイヤーが滑ります
-  *  既存のエンジンには静的物理オブジェクトを回転させるための処理がなかったため、PhysicsStaticObject.hのSetPosition関数を参考にSetRotation関数を作成しました<br>
-  ```C++
-  void SetRotation(const Quaternion& rot)
-		{
-			auto& btTrans = m_rigidBody.GetBody()->getWorldTransform();
-			btQuaternion btRot;
-			btRot = btQuaternion(rot.x,rot.y,rot.z,rot.w);
-			btTrans.setRotation(btRot);
-		}
-  ```
 <details>
 <summary>動画</summary>
 
   [![ギミック氷の床](https://img.youtube.com/vi/FPwZ4YPGl8Y/0.jpg)](https://www.youtube.com/watch?v=FPwZ4YPGl8Y)
 </details>
 
+---
   ### 3. 炎の柱
   * 一定間隔で炎が吹き出します
   * プレイヤーが当たるとHPが減少していきます<br>
@@ -147,6 +139,22 @@
 
 [![ギミック炎の柱](https://img.youtube.com/vi/pE7BFnn8gUU/0.jpg)](https://www.youtube.com/watch?v=pE7BFnn8gUU)
 </details>
+
+## __6.技術的要素__
+### 1. 静的物理オブジェクトの回転とぷれいやーが滑る処理
+  &emsp;ステージとプレイヤーの当たり判定は静的物理オブジェクトとキャラクターコントローラーで取っているため、モデルだけ回転させると、意図した挙動にならないため、静的物理オブジェクトも回転させる必要があります。<br>
+  &emsp;しかし、既存のエンジンには静的物理オブジェクトを回転させるための処理がなかったため、PhysicsStaticObject.hのSetPosition関数を参考にSetRotation関数を作成しました。<br>
+  ```C++
+  void SetRotation(const Quaternion& rot)
+		{
+			auto& btTrans = m_rigidBody.GetBody()->getWorldTransform();
+			btQuaternion btRot;
+			btRot = btQuaternion(rot.x,rot.y,rot.z,rot.w);
+			btTrans.setRotation(btRot);
+		}
+  ```
+
+
 
 
 
