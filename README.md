@@ -117,5 +117,19 @@
 
 https://user-images.githubusercontent.com/121418275/216736355-4d4eaccf-dd65-40ce-b074-4f3eb0a0b31c.mp4
 
+  ### 2. 氷の床<br>
+  *  傾く床の上に乗ると傾きによってプレイヤーが滑ります
+  *  既存のエンジンには静的物理オブジェクトを回転させるための処理がなかったため、PhysicsStaticObject.hのSetPosition関数を参考にSetRotation関数を作成しました<br>
+  ```C++
+  void SetRotation(const Quaternion& rot)
+		{
+			auto& btTrans = m_rigidBody.GetBody()->getWorldTransform();
+			btQuaternion btRot;
+			btRot = btQuaternion(rot.x,rot.y,rot.z,rot.w);
+			btTrans.setRotation(btRot);
+		}
+  ```
+
+
 
 
