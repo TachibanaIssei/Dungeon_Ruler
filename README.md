@@ -110,3 +110,6 @@
 
  ## __5.ギミック__
  
+
+https://user-images.githubusercontent.com/121418275/216736355-4d4eaccf-dd65-40ce-b074-4f3eb0a0b31c.mp4
+
