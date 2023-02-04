@@ -86,6 +86,11 @@ public:
 	/// </summary>
 	void ChangeClearBGM();
 
+	/// <summary>
+	/// コンテニュー時の音に変える
+	/// </summary>
+	void ChangeContinueSound();
+
 	void NotifyReStart();
 	void NotifyClear();
 
@@ -107,6 +112,7 @@ private:
 	Fade*					m_fade = nullptr;
 	SoundSource* m_playBGM;
 	SoundSource* m_clearBGM;
+	SoundSource* m_deadSound;
 
 	SpriteRender			m_deadSprite;		//プレイヤー死亡画像
 	SpriteRender			m_continueSprite;	//コンティニュー画像
@@ -132,6 +138,7 @@ private:
 	bool					m_isWaitFadeout			= false;	//フェード待ち
 	bool					m_isWaitRespown			= false;	//リスポーン待ち
 	bool					m_gameClearSpriteFlag	= false;	//ゲームクリア画像の表示フラグ
+	bool					m_continueBGMFlag		= false;	//コンテニュー画面で流す音のフラグ
 	int						m_numEnemy				= 0;		//敵の数
 	int						m_numDefeatedEnemy		= 0;		//倒した敵の数
 	float					m_gameClearAlpha		= 0.0f;		//ゲームクリア画像のアルファ値
@@ -180,4 +187,5 @@ private:
 17:魔法不発SE
 18:ボスを倒した時のSE
 19:コンテニュー時のSE
+20:コンテニュー画面のBGM
 */

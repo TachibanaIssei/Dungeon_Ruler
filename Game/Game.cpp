@@ -78,6 +78,7 @@ Game::~Game()
 	DeleteGO(m_movingFloorX);
 	DeleteGO(m_playBGM);
 	DeleteGO(m_clearBGM);
+	DeleteGO(m_deadSound);
 
 	//炎ギミックの削除
 	for (auto firegimmic : m_fireGimmicVector)
@@ -352,6 +353,7 @@ bool Game::Start()
 	//音のロード
 	g_soundEngine->ResistWaveFileBank(1, "Assets/sound/BGM_play.wav");
 	g_soundEngine->ResistWaveFileBank(2, "Assets/sound/BGM_clear.wav");
+	g_soundEngine->ResistWaveFileBank(20, "Assets/sound/BGM_playerDead.wav");
 
 	m_playBGM = NewGO<SoundSource>(0);
 	m_playBGM->Init(1);
@@ -394,6 +396,20 @@ void Game::ChangeClearBGM()
 	m_clearBGM->Play(true);
 }
 
+void Game::ChangeContinueSound()
+{
+	if (!m_continueBGMFlag)
+	{
+		m_playBGM->Stop();
+		m_deadSound = NewGO<SoundSource>(0);
+		m_deadSound->Init(20);
+		m_deadSound->SetVolume(PLAY_BGM_VOLUME);
+		m_deadSound->Play(false);
+
+		m_continueBGMFlag = true;
+	}
+}
+
 void Game::NotifyReStart()
 {
 	if (!m_fade->IsFade())
@@ -429,6 +445,9 @@ void Game::NotifyReStart()
 		m_deadBackGroundAlpha	= 0.0f;
 		g_renderingEngine->GetDeferredLightingCB().m_grayscale = 0.0f;
 
+		m_playBGM->Play(true);
+		m_continueBGMFlag = false;
+
 		m_fade->StartFadeIn();
 		m_isWaitRespown = false;
 	}
@@ -462,6 +481,16 @@ void Game::Update()
 
 	if (m_gameState == enGameState_PlayerDead)
 	{
+		ChangeContinueSound();
+
+		if (g_pad[0]->IsTrigger(enButtonA))
+		{
+			if (m_deadSound->IsPlaying())
+			{
+				m_deadSound->Stop();
+			}
+		}
+
 		if (g_renderingEngine->GetDeferredLightingCB().m_grayscale >= 1.0f)
 		{
 			g_renderingEngine->GetDeferredLightingCB().m_grayscale = 1.0f;
