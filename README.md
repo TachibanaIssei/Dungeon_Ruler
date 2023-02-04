@@ -115,7 +115,7 @@
    * 床の上に乗るとプレイヤーも一緒に移動します<br>
    * 床の移動速度をプレイヤーの移動速度に加算して実装しました<br>
 
-https://user-images.githubusercontent.com/121418275/216736355-4d4eaccf-dd65-40ce-b074-4f3eb0a0b31c.mp4
+[![ギミック動く床](https://img.youtube.com/vi/U87YqJSWFL8/0.jpg)](https://www.youtube.com/watch?v=U87YqJSWFL8)
 
   ### 2. 氷の床<br>
   *  傾く床の上に乗ると傾きによってプレイヤーが滑ります
@@ -129,6 +129,7 @@ https://user-images.githubusercontent.com/121418275/216736355-4d4eaccf-dd65-40ce
 			btTrans.setRotation(btRot);
 		}
   ```
+  [![ギミック氷の床](https://img.youtube.com/vi/FPwZ4YPGl8Y/0.jpg)](https://www.youtube.com/watch?v=FPwZ4YPGl8Y)
 
 
 
