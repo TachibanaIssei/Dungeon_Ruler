@@ -145,7 +145,7 @@
   &emsp;ステージとプレイヤーの当たり判定は静的物理オブジェクトとキャラクターコントローラーで取っています。<br>
   &emsp;そのため、モデルだけ回転させると、意図した挙動にならないため、静的物理オブジェクトも回転させる必要があります。<br>
   &emsp;しかし、既存のエンジンには静的物理オブジェクトを回転させるための処理がなかったため、PhysicsStaticObject.hのSetPosition関数を参考にSetRotation関数を作成しました。<br>
-  ```C++:PhysicsStaticObject.h
+  ```C++
   void SetRotation(const Quaternion& rot)
 		{
 			auto& btTrans = m_rigidBody.GetBody()->getWorldTransform();
@@ -156,6 +156,10 @@
   ```
   ### 2.プレイヤーの滑る処理
   &emsp;床の回転の値(rotation)を取得して、rotationにスカラーを乗算し、プレイヤーの移動速度に加算することで実装しました。
+  ```
+  float rot = seesawFloor->GetRotation() * 500.0f;
+m_oldMoveSpeed.z += rot;
+  ```
 
 
 
