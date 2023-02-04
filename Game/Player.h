@@ -303,6 +303,7 @@ private:
 	};
 
 	Game*			m_game = nullptr;
+	Fade*			m_fade = nullptr;
 	MovingFloor*	m_movingFloorX		= nullptr;
 	CheckPoint*		m_checkPoint		= nullptr;
 

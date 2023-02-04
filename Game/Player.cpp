@@ -146,6 +146,7 @@ bool Player::Start()
 	g_soundEngine->ResistWaveFileBank(19, "Assets/sound/continue.wav");
 
 	m_game = FindGO<Game>("game");
+	m_fade = FindGO<Fade>("fade");
 
 	m_movingFloorX = FindGO<MovingFloor>("movingfloorX");
 	m_checkPoint = FindGO<CheckPoint>("checkPoint");
@@ -175,6 +176,11 @@ void Player::FindObject()
 	{
 		m_game = FindGO<Game>("game");
 		return;
+	}
+
+	if (m_fade == nullptr)
+	{
+		m_fade = FindGO<Fade>("fade");
 	}
 
 	if (m_movingFloorX == nullptr)
@@ -923,8 +929,7 @@ void Player::ProcessDownStateTransition()
 			se->Play(false);
 
 			//ÉäÉXÉ|Å[ÉìÇ≥ÇπÇÈ
-			Fade* fade = FindGO<Fade>("fade");
-			fade->StartFadeOut();
+			m_fade->StartFadeOut();
 			m_game->SetisWaitRespown();
 		}
 	}
@@ -1113,11 +1118,13 @@ void Player::Render(RenderContext& rc)
 
 	if (m_spriteFlag == true)
 	{
-		m_statusBar.Draw(rc);
-		m_hpBar.Draw(rc);
-		m_mpBar.Draw(rc);
-		m_playerFaceBack.Draw(rc);
-		m_playerFaceFrame.Draw(rc);
+		if (!m_fade->IsFade()) {
+			m_statusBar.Draw(rc);
+			m_hpBar.Draw(rc);
+			m_mpBar.Draw(rc);
+			m_playerFaceBack.Draw(rc);
+			m_playerFaceFrame.Draw(rc);
+		}
 	}
 }
 
