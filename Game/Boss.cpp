@@ -433,6 +433,12 @@ void Boss::ProcessCommonStateTransition()
 	m_idleTimer = 0.0f;
 	m_chaseTimer = 0.0f;
 
+	if (m_player->isPlayerDead())
+	{
+		m_BossState = enBossState_Idle;
+		return;
+	}
+
 	//エネミーからプレイヤーに向かうベクトルを計算する
 	Vector3 diff = m_player->GetPosition() - m_position;
 

@@ -282,6 +282,12 @@ void StoneMonster::ProcessCommonStateTransition()
 	m_idleTimer = 0.0f;
 	m_chaseTimer = 0.0f;
 
+	if (m_player->isPlayerDead())
+	{
+		m_stoneState = enStoneState_Idle;
+		return;
+	}
+
 	//エネミーからプレイヤーに向かうベクトルを計算する
 	Vector3 diff = m_player->GetPosition() - m_position;
 
