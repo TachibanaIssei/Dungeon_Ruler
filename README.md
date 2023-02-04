@@ -160,7 +160,12 @@
   float rot = seesawFloor->GetRotation() * 500.0f;
 m_oldMoveSpeed.z += rot;
   ```
+  ### 3.グレースケール
+  &emsp;プレイヤーが死亡したときに、3Dモデルがグレースケールになるようにしました。
+  &emsp;徐々にグレースケールになるようにするために、C++側で値を増加させていき、HLSLに渡して、線形補間を使って実装しました。
 
+  >参考にしたサイト<br>
+  [DirectX11プログラミング-グレースケールシェーダー-](https://yun.cup.com/directx11032.html)
 
 
 
