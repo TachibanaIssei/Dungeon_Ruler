@@ -49,6 +49,8 @@ bool FireGimmic::Start()
 	m_firstPosition = m_position;
 	
 	m_fire = NewGO<EffectEmitter>(0);
+	m_fire->Init(1);
+	m_fire->SetScale(Vector3::One * 30.0f);
 	m_fire->SetIsOutDelete(false);
 
 	m_se = NewGO<SoundSource>(0);
@@ -111,14 +113,21 @@ void FireGimmic::Move()
 
 void FireGimmic::PlayEffect()
 {
+	if (m_player->isPlayerDead())
+	{
+		if (m_fire->IsPlay())
+		{
+			m_fire->Stop();
+		}
+		return;
+	}
+
 	m_effectIntervalTimer += g_gameTime->GetFrameDeltaTime();
 	if (m_effectIntervalTimer <= m_effectInterval)
 	{
 		return;
 	}
 
-	m_fire->Init(1);
-	m_fire->SetScale(Vector3::One * 30.0f);
 	m_fire->SetPosition(m_position);
 	m_fire->Play();
 
@@ -142,6 +151,12 @@ void FireGimmic::Collision()
 
 void FireGimmic::PlaySE()
 {
+	if (m_player->isPlayerDead())
+	{
+		m_se->Stop();
+		return;
+	}
+
 	if (m_game->IsWannhilationEnemy())
 	{
 		m_se->Stop();
