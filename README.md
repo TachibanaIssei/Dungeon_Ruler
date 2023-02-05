@@ -171,12 +171,14 @@
 			btTrans.setRotation(btRot);
 		}
   ```
+  ***
   ### 2.プレイヤーの滑る処理
   &emsp;床の回転の値(seesawFloor->GetRotation())を取得して、床の回転の値にスカラーを乗算し、プレイヤーの移動速度(m_oldMoveSpeed)に加算することで実装しました。
   ```
   float rot = seesawFloor->GetRotation() * 500.0f;
 m_oldMoveSpeed.z += rot;
   ```
+  ***
   ### 3.グレースケール
   &emsp;プレイヤーが死亡したときに、3Dモデルがグレースケールになるようにしました。<br>
   &emsp;徐々にグレースケールになるようにするために、線形補間を使って実装しました。<br>
@@ -192,13 +194,12 @@ float Y = finalColor.r * 0.29891f + finalColor.g * 0.58661f + finalColor.b * 0.1
 <summary>動画</summary>
 
 [![グレースケール](https://img.youtube.com/vi/sS8M10yryos/0.jpg)](https://www.youtube.com/watch?v=sS8M10yryos)
-
 </details>
   <br>
 
   >参考にしたサイト<br>
   [DirectX11プログラミング-グレースケールシェーダー-](https://yun.cup.com/directx11032.html)
-
+***
   ### 4.スロー演出
   &emsp;ボスを倒したときにスローの演出をいれました。
   これにより強敵を倒したということを感じやすくできたと思います。<br>
