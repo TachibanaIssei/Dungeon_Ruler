@@ -129,11 +129,9 @@
    * 床が前後や左右に移動します<br>
    * 床の上に乗るとプレイヤーも一緒に移動します<br>
    * 床の移動速度をプレイヤーの移動速度に加算して実装しました<br>
-<details>
-<summary>動画</summary>
 
+▼動画
 [![ギミック動く床](https://img.youtube.com/vi/U87YqJSWFL8/0.jpg)](https://www.youtube.com/watch?v=U87YqJSWFL8)
-</details>
 
 ---
   ### 2. 氷の床<br>
@@ -149,11 +147,8 @@
   * 一定間隔で炎が吹き出します
   * プレイヤーが当たるとHPが減少していきます<br>
 
-<details>
-<summary>動画</summary>
-
+▼動画
 [![ギミック炎の柱](https://img.youtube.com/vi/pE7BFnn8gUU/0.jpg)](https://www.youtube.com/watch?v=pE7BFnn8gUU)
-</details>
 
 ⇧[目次に戻る](#目次)
 
@@ -190,12 +185,8 @@ float Y = finalColor.r * 0.29891f + finalColor.g * 0.58661f + finalColor.b * 0.1
     finalColor.g = (finalColor.g * fullcolor) + (Y * light.grayscale);
     finalColor.b = (finalColor.b * fullcolor) + (Y * light.grayscale);
 ```
-<details>
-<summary>動画</summary>
-
+▼動画
 [![グレースケール](https://img.youtube.com/vi/zorWn05enB0/0.jpg)](https://www.youtube.com/watch?v=zorWn05enB0)
-</details>
-  <br>
 
   >参考にしたサイト<br>
   [DirectX11プログラミング-グレースケールシェーダー-](https://yun.cup.com/directx11032.html)
@@ -205,11 +196,8 @@ float Y = finalColor.r * 0.29891f + finalColor.g * 0.58661f + finalColor.b * 0.1
   これにより強敵を倒したということを感じやすくできたと思います。<br>
   FPSを一時的に落とすことで実装しました。
 
-<details>
-<summary>動画</summary>
-
+▼動画
 [![スローモーション](https://img.youtube.com/vi/GJv1pbQCk0Y/0.jpg)](https://www.youtube.com/watch?v=GJv1pbQCk0Y)
-</details>
 
 ⇧[目次に戻る](#目次)
 
