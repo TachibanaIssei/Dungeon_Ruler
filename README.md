@@ -193,7 +193,7 @@ float Y = finalColor.r * 0.29891f + finalColor.g * 0.58661f + finalColor.b * 0.1
 <details>
 <summary>動画</summary>
 
-[![グレースケール](https://img.youtube.com/vi/sS8M10yryos/0.jpg)](https://www.youtube.com/watch?v=sS8M10yryos)
+[![グレースケール](https://img.youtube.com/vi/zorWn05enB0/0.jpg)](https://www.youtube.com/watch?v=zorWn05enB0)
 </details>
   <br>
 
