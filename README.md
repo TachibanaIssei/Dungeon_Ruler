@@ -4,11 +4,24 @@
 1年 橘 一生
 # 目次
 <details>
-<summary>詳細</summary>
+<summary>目次</summary>
 
-  1. [ゲーム概要](#1-ゲーム概要)
-  2. [操作説明](#2-操作説明)
-  3. [ソースコード](#3-ソースコード)
+- [Dungeon Ruler](#dungeon-ruler)
+    - [作成者](#作成者)
+- [目次](#目次)
+  - [__1. ゲーム概要__](#1-ゲーム概要)
+  - [__2. 操作説明__](#2-操作説明)
+  - [__3. ソースコード__](#3-ソースコード)
+  - [__4. ステージ__](#4-ステージ)
+  - [__5.ギミック紹介__](#5ギミック紹介)
+    - [1. 動く床](#1-動く床)
+    - [2. 氷の床](#2-氷の床)
+    - [3. 炎の柱](#3-炎の柱)
+  - [__6.技術的要素__](#6技術的要素)
+    - [1. 静的物理オブジェクトの回転](#1-静的物理オブジェクトの回転)
+    - [2.プレイヤーの滑る処理](#2プレイヤーの滑る処理)
+    - [3.グレースケール](#3グレースケール)
+    - [4.スロー演出](#4スロー演出)
 
 </details>
 
@@ -18,16 +31,17 @@
 
 ***
 * __ゲームジャンル__<br>
-  3Dアクションゲーム<br>
+  3Dアクションゲーム
 * __ゲーム内容__<br>
-  騎士を操作してダンジョン内の敵を倒し、ギミックをクリアして、ダンジョンの奥にいる支配者を倒す。
+  &emsp;騎士を操作してダンジョン内の敵を倒し、ギミックをクリアして、ダンジョンの奥にいる支配者を倒す。
 ***
 * __使用ゲームエンジン__<br>
   学校内製のゲームエンジンを使用
 * __使用ツール__
-  * Visual&thinsp;Studio 2022
+  * Visual Studio 2022
   * 3dsMax 2023
   * Adobe Photoshop 2023
+  * Effekseer
 * __使用言語__
   * C++ 
 * __開発環境__
@@ -155,19 +169,43 @@
 		}
   ```
   ### 2.プレイヤーの滑る処理
-  &emsp;床の回転の値(rotation)を取得して、rotationにスカラーを乗算し、プレイヤーの移動速度に加算することで実装しました。
+  &emsp;床の回転の値(seesawFloor->GetRotation())を取得して、床の回転の値にスカラーを乗算し、プレイヤーの移動速度(m_oldMoveSpeed)に加算することで実装しました。
   ```
   float rot = seesawFloor->GetRotation() * 500.0f;
 m_oldMoveSpeed.z += rot;
   ```
   ### 3.グレースケール
-  &emsp;プレイヤーが死亡したときに、3Dモデルがグレースケールになるようにしました。
-  &emsp;徐々にグレースケールになるようにするために、C++側で値を増加させていき、HLSLに渡して、線形補間を使って実装しました。
+  &emsp;プレイヤーが死亡したときに、3Dモデルがグレースケールになるようにしました。<br>
+  &emsp;徐々にグレースケールになるようにするために、線形補間を使って実装しました。<br>
+```HLSL
+float Y = finalColor.r * 0.29891f + finalColor.g * 0.58661f + finalColor.b * 0.11448f;
+    float fullcolor = 1.0f - light.grayscale;
+    
+    finalColor.r = (finalColor.r * fullcolor) + (Y * light.grayscale);
+    finalColor.g = (finalColor.g * fullcolor) + (Y * light.grayscale);
+    finalColor.b = (finalColor.b * fullcolor) + (Y * light.grayscale);
+```
+<details>
+<summary>動画</summary>
+
+[![グレースケール](https://img.youtube.com/vi/sS8M10yryos/0.jpg)](https://www.youtube.com/watch?v=sS8M10yryos)
+
+</details>
+  <br>
 
   >参考にしたサイト<br>
   [DirectX11プログラミング-グレースケールシェーダー-](https://yun.cup.com/directx11032.html)
 
+  ### 4.スロー演出
+  &emsp;ボスを倒したときにスローの演出をいれました。
+  これにより強敵を倒したということを感じやすくできたと思います。<br>
+  FPSを一時的に落とすことで実装しました。
 
+<details>
+<summary>動画</summary>
+
+[![スローモーション](https://img.youtube.com/vi/GJv1pbQCk0Y/0.jpg)](https://www.youtube.com/watch?v=GJv1pbQCk0Y)
+</details>
 
 
 
