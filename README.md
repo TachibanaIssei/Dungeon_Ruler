@@ -136,18 +136,16 @@
 ---
   ### 2. 氷の床<br>
   *  傾く床の上に乗ると傾きによってプレイヤーが滑ります
-<details>
-<summary>動画</summary>
 
+▼動画<br>
   [![ギミック氷の床](https://img.youtube.com/vi/FPwZ4YPGl8Y/0.jpg)](https://www.youtube.com/watch?v=FPwZ4YPGl8Y)
-</details>
 
 ---
   ### 3. 炎の柱
   * 一定間隔で炎が吹き出します
   * プレイヤーが当たるとHPが減少していきます<br>
 
-▼動画
+▼動画<br>
 [![ギミック炎の柱](https://img.youtube.com/vi/pE7BFnn8gUU/0.jpg)](https://www.youtube.com/watch?v=pE7BFnn8gUU)
 
 ⇧[目次に戻る](#目次)
@@ -185,7 +183,7 @@ float Y = finalColor.r * 0.29891f + finalColor.g * 0.58661f + finalColor.b * 0.1
     finalColor.g = (finalColor.g * fullcolor) + (Y * light.grayscale);
     finalColor.b = (finalColor.b * fullcolor) + (Y * light.grayscale);
 ```
-▼動画
+▼動画<br>
 [![グレースケール](https://img.youtube.com/vi/zorWn05enB0/0.jpg)](https://www.youtube.com/watch?v=zorWn05enB0)
 
   >参考にしたサイト<br>
@@ -196,7 +194,7 @@ float Y = finalColor.r * 0.29891f + finalColor.g * 0.58661f + finalColor.b * 0.1
   これにより強敵を倒したということを感じやすくできたと思います。<br>
   FPSを一時的に落とすことで実装しました。
 
-▼動画
+▼動画<br>
 [![スローモーション](https://img.youtube.com/vi/GJv1pbQCk0Y/0.jpg)](https://www.youtube.com/watch?v=GJv1pbQCk0Y)
 
 ⇧[目次に戻る](#目次)
