@@ -24,6 +24,8 @@
 ▼第11回全国専門学校ゲームコンペティション応募動画<br>
 [![](https://img.youtube.com/vi/IK2ury61ALo/0.jpg)](https://www.youtube.com/watch?v=IK2ury61ALo)
 
+▼プレイ動画<br>
+[![プレイ動画](https://img.youtube.com/vi/qhhHg3uN57c/0.jpg)](https://www.youtube.com/watch?v=qhhHg3uN57c)
 ***
 * __ゲームジャンル__<br>
   3Dアクションゲーム
@@ -184,7 +186,7 @@ float Y = finalColor.r * 0.29891f + finalColor.g * 0.58661f + finalColor.b * 0.1
     finalColor.b = (finalColor.b * fullcolor) + (Y * light.grayscale);
 ```
 ▼動画<br>
-[![グレースケール](https://img.youtube.com/vi/zorWn05enB0/0.jpg)](https://www.youtube.com/watch?v=zorWn05enB0)
+[![グレースケール](https://img.youtube.com/vi/3g6UbGYMKmM/0.jpg)](https://www.youtube.com/watch?v=3g6UbGYMKmM)
 
   >参考にしたサイト<br>
   [DirectX11プログラミング-グレースケールシェーダー-](https://yun.cup.com/directx11032.html)
