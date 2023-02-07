@@ -19,6 +19,7 @@
     - [2.プレイヤーの滑る処理](#2プレイヤーの滑る処理)
     - [3.グレースケール](#3グレースケール)
     - [4.スロー演出](#4スロー演出)
+    - [5.ミニマップ](#5ミニマップ)
 
 ## __1. ゲーム概要__
 ▼第11回全国専門学校ゲームコンペティション応募動画<br>
@@ -198,7 +199,39 @@ float Y = finalColor.r * 0.29891f + finalColor.g * 0.58661f + finalColor.b * 0.1
 
 ▼動画<br>
 [![スローモーション](https://img.youtube.com/vi/GJv1pbQCk0Y/0.jpg)](https://www.youtube.com/watch?v=GJv1pbQCk0Y)
+***
+  ### 5.ミニマップ
+  &emsp;右上に敵やギミックを表示するミニマップを実装しました。<br>
+  &emsp;実装の方法は以下の通りです。<br>
+  
+  1.  マップの中心にしたいオブジェクトの座標(プレイヤー)からマップに表示したいオブジェクトの座標(敵やギミック)に向かうベクトルを求める。
+  2.  1で求めたベクトルが一定以上だったら表示しないようにする
+  3.  1で求めたベクトル長さを求める
+   ```C++
+  float length = diff.Length();
+   ```
+  4.  カメラの前方向ベクトルとクォータニオンを作成する
+  ```C++
+    Vector3 forward = g_camera3D->GetForward();
+	Quaternion rot;
+  ```
+  5.  atan2関数でカメラの前方向ベクトルの-X軸とZ軸を引数にして角度を求め、3で作成したクォータニオンに回転を設定する
+
+  ```C++
+  rot.SetRotationY(atan2(-forward.x, forward.z));
+  ```
+  6.  1のベクトルに5で設定した回転を適用する
+  7.  1で求めたベクトルを正規化する
+  8.  7で正規化したベクトルに ベクトルの大きさ ✕ マップの大きさ ✕ マップの表示距離制限 を乗算してマップ座標系に変換する
+   ```C++
+  diff *= length * MAP_RADIUS / LIMITED_RANGE_IMAGE;
+   ```
+  9.  マップの中央座標と8で求めたベクトルを加算する
+   ```C++
+  mapPosition = Vector3(m_mapCenterPosition.x + diff.x, m_mapCenterPosition.y + diff.z, 0.0f);
+   ```
+
+▼動画<br>
+[![ミニマップ](https://img.youtube.com/vi/m2Fe7SGCH8c/0.jpg)](https://www.youtube.com/watch?v=m2Fe7SGCH8c)
 
 ⇧[目次に戻る](#目次)
-
-
