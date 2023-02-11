@@ -160,10 +160,10 @@
   ```C++
   void SetRotation(const Quaternion& rot)
 		{
-			auto& btTrans = m_rigidBody.GetBody()->getWorldTransform();
-			btQuaternion btRot;
-			btRot = btQuaternion(rot.x,rot.y,rot.z,rot.w);
-			btTrans.setRotation(btRot);
+		auto& btTrans = m_rigidBody.GetBody()->getWorldTransform();
+		btQuaternion btRot;
+		btRot = btQuaternion(rot.x,rot.y,rot.z,rot.w);
+		btTrans.setRotation(btRot);
 		}
   ```
   ***
@@ -179,11 +179,11 @@ m_oldMoveSpeed.z += rot;
   &emsp;徐々にグレースケールになるようにするために、線形補間を使って実装しました。<br>
 ```HLSL
 float Y = finalColor.r * 0.29891f + finalColor.g * 0.58661f + finalColor.b * 0.11448f;
-    float fullcolor = 1.0f - light.grayscale;
+float fullcolor = 1.0f - light.grayscale;
     
-    finalColor.r = (finalColor.r * fullcolor) + (Y * light.grayscale);
-    finalColor.g = (finalColor.g * fullcolor) + (Y * light.grayscale);
-    finalColor.b = (finalColor.b * fullcolor) + (Y * light.grayscale);
+finalColor.r = (finalColor.r * fullcolor) + (Y * light.grayscale);
+finalColor.g = (finalColor.g * fullcolor) + (Y * light.grayscale);
+finalColor.b = (finalColor.b * fullcolor) + (Y * light.grayscale);
 ```
 ▼動画<br>
 [![グレースケール](https://img.youtube.com/vi/3g6UbGYMKmM/0.jpg)](https://www.youtube.com/watch?v=3g6UbGYMKmM)
