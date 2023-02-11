@@ -161,7 +161,7 @@
   ```C++
   void SetRotation(const Quaternion& rot)
 {
-  auto& btTrans = m_rigidBody.GetBody()->getWorldTransform();
+    auto& btTrans = m_rigidBody.GetBody()->getWorldTransform();
 	btQuaternion btRot;
 	btRot = btQuaternion(rot.x,rot.y,rot.z,rot.w);
 	btTrans.setRotation(btRot);
