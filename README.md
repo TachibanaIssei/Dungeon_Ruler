@@ -160,11 +160,11 @@
   &emsp;しかし、既存のエンジンには静的物理オブジェクトを回転させるための処理がなかったため、PhysicsStaticObject.hのSetPosition関数を参考にSetRotation関数を作成しました。<br>
   ```C++
   void SetRotation(const Quaternion& rot)
-	{
-		auto& btTrans = m_rigidBody.GetBody()->getWorldTransform();
-		btQuaternion btRot;
-		btRot = btQuaternion(rot.x,rot.y,rot.z,rot.w);
-		btTrans.setRotation(btRot);
+{
+  auto& btTrans = m_rigidBody.GetBody()->getWorldTransform();
+	btQuaternion btRot;
+	btRot = btQuaternion(rot.x,rot.y,rot.z,rot.w);
+	btTrans.setRotation(btRot);
   }
   ```
   ***
