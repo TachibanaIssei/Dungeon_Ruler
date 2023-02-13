@@ -42,7 +42,6 @@
   * Effekseer
 * __使用言語__
   * C++ 
-  * HLSL
 * __開発環境__
   * Windows11
   * DirectX12
