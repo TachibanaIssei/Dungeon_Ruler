@@ -216,7 +216,7 @@ finalColor.b = (finalColor.b * fullcolor) + (Y * light.grayscale);
   Vector3 forward = g_camera3D->GetForward();
 Quaternion rot;
   ```
-  5.  atan2関数でカメラの前方向ベクトルの-X軸とZ軸を引数にして角度を求め、3で作成したクォータニオンに回転を設定する
+  5.  atan2関数でカメラの前方向ベクトルの-X軸とZ軸を引数にして角度を求め、4で作成したクォータニオンに回転を設定する
 
   ```C++
   rot.SetRotationY(atan2(-forward.x, forward.z));
