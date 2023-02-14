@@ -121,8 +121,8 @@
 ⇧[目次に戻る](#目次)
 
 ## __4. ステージ__
-  ステージは以下の3つで構成されています。
- ![ステージ構成](PortfolioImage/stage.png "ステージ構成")
+  ステージは以下の3つで構成されています。 
+ ![ステージ構成](https://user-images.githubusercontent.com/121418275/218459536-4ac91d27-a9a8-494f-b0da-e98795528765.png)
  ① 雑魚敵との戦闘<br>
  ② ステージギミックのあるアスレチックコース<br>
  ③ ボス戦
@@ -207,7 +207,7 @@ finalColor.b = (finalColor.b * fullcolor) + (Y * light.grayscale);
   
   1.  マップの中心にしたいオブジェクトの座標(プレイヤー)からマップに表示したいオブジェクトの座標(敵やギミック)に向かうベクトルを求める。
   2.  1で求めたベクトルが一定以上だったら表示しないようにする
-  3.  1で求めたベクトル長さを求める
+  3.  1で求めたベクトルの大きさ(長さ)を求める
    ```C++
   float length = diff.Length();
    ```
@@ -216,7 +216,7 @@ finalColor.b = (finalColor.b * fullcolor) + (Y * light.grayscale);
   Vector3 forward = g_camera3D->GetForward();
 Quaternion rot;
   ```
-  5.  atan2関数でカメラの前方向ベクトルの-X軸とZ軸を引数にして角度を求め、3で作成したクォータニオンに回転を設定する
+  5.  atan2関数でカメラの前方向ベクトルの-X軸とZ軸を引数にして角度を求め、4で作成したクォータニオンに回転を設定する
 
   ```C++
   rot.SetRotationY(atan2(-forward.x, forward.z));
