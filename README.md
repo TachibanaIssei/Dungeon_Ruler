@@ -135,7 +135,7 @@
    * 床の移動速度をプレイヤーの移動速度に加算して実装しました<br>
 
 ▼動画<br>
-[![ギミック動く床](https://img.youtube.com/vi/U87YqJSWFL8/0.jpg)](https://www.youtube.com/watch?v=U87YqJSWFL8)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/U87YqJSWFL8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ---
   ### 2. 氷の床<br>
