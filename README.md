@@ -29,7 +29,7 @@
 [![プレイ動画](https://img.youtube.com/vi/DOX1SQHATAg/0.jpg)](https://www.youtube.com/watch?v=DOX1SQHATAg)
 ***
 * __ゲームジャンル__<br>
-  3Dアクションゲーム
+  &emsp;3Dアクションゲーム
 * __ゲーム内容__<br>
   &emsp;騎士を操作してダンジョン内の敵を倒し、ギミックをクリアして、ダンジョンの奥にいる支配者を倒す。
 ***
