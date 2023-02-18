@@ -26,9 +26,7 @@
 [![](https://img.youtube.com/vi/IK2ury61ALo/0.jpg)](https://www.youtube.com/watch?v=IK2ury61ALo)
 
 ▼プレイ動画<br>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/DOX1SQHATAg?start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
+[![プレイ動画](https://img.youtube.com/vi/qhhHg3uN57c/0.jpg)](https://www.youtube.com/watch?v=qhhHg3uN57c)
 ***
 * __ゲームジャンル__<br>
   3Dアクションゲーム
@@ -137,7 +135,7 @@
    * 床の移動速度をプレイヤーの移動速度に加算して実装しました<br>
 
 ▼動画<br>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/U87YqJSWFL8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+[![ギミック動く床](https://img.youtube.com/vi/U87YqJSWFL8/0.jpg)](https://www.youtube.com/watch?v=U87YqJSWFL8)
 
 ---
   ### 2. 氷の床<br>
