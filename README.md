@@ -26,7 +26,9 @@
 [![](https://img.youtube.com/vi/IK2ury61ALo/0.jpg)](https://www.youtube.com/watch?v=IK2ury61ALo)
 
 ▼プレイ動画<br>
-[![プレイ動画](https://img.youtube.com/vi/qhhHg3uN57c/0.jpg)](https://www.youtube.com/watch?v=qhhHg3uN57c)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DOX1SQHATAg?start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ***
 * __ゲームジャンル__<br>
   3Dアクションゲーム
