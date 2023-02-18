@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="dungeon-ruler">Dungeon Ruler</h1>
+<h3 id="%E4%BD%9C%E6%88%90%E8%80%85">作成者</h3>
+<p>河原電子ビジネス専門学校<br>
+1年 橘 一生</p>
+<h1 id="%E7%9B%AE%E6%AC%A1">目次</h1>
+<ul>
+<li><a href="#dungeon-ruler">Dungeon Ruler</a>
+<ul>
+<li><a href="#%E4%BD%9C%E6%88%90%E8%80%85">作成者</a></li>
+</ul>
+</li>
+<li><a href="#%E7%9B%AE%E6%AC%A1">目次</a>
+<ul>
+<li><a href="#1-%E3%82%B2%E3%83%BC%E3%83%A0%E6%A6%82%E8%A6%81"><strong>1. ゲーム概要</strong></a></li>
+<li><a href="#2-%E6%93%8D%E4%BD%9C%E8%AA%AC%E6%98%8E"><strong>2. 操作説明</strong></a></li>
+<li><a href="#3-%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89"><strong>3. ソースコード</strong></a></li>
+<li><a href="#4-%E3%82%B9%E3%83%86%E3%83%BC%E3%82%B8"><strong>4. ステージ</strong></a></li>
+<li><a href="#5%E3%82%AE%E3%83%9F%E3%83%83%E3%82%AF%E7%B4%B9%E4%BB%8B"><strong>5.ギミック紹介</strong></a>
+<ul>
+<li><a href="#1-%E5%8B%95%E3%81%8F%E5%BA%8A">1. 動く床</a></li>
+<li><a href="#2-%E6%B0%B7%E3%81%AE%E5%BA%8A">2. 氷の床</a></li>
+<li><a href="#3-%E7%82%8E%E3%81%AE%E6%9F%B1">3. 炎の柱</a></li>
+</ul>
+</li>
+<li><a href="#6%E6%8A%80%E8%A1%93%E7%9A%84%E8%A6%81%E7%B4%A0"><strong>6.技術的要素</strong></a>
+<ul>
+<li><a href="#1-%E9%9D%99%E7%9A%84%E7%89%A9%E7%90%86%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E5%9B%9E%E8%BB%A2">1. 静的物理オブジェクトの回転</a></li>
+<li><a href="#2%E3%83%97%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC%E3%81%AE%E6%BB%91%E3%82%8B%E5%87%A6%E7%90%86">2.プレイヤーの滑る処理</a></li>
+<li><a href="#3%E3%82%B0%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB">3.グレースケール</a></li>
+<li><a href="#4%E3%82%B9%E3%83%AD%E3%83%BC%E6%BC%94%E5%87%BA">4.スロー演出</a></li>
+<li><a href="#5%E3%83%9F%E3%83%8B%E3%83%9E%E3%83%83%E3%83%97">5.ミニマップ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-%E3%82%B2%E3%83%BC%E3%83%A0%E6%A6%82%E8%A6%81"><strong>1. ゲーム概要</strong></h2>
+<p>▼第11回全国専門学校ゲームコンペティション応募動画<br>
+<a href="https://www.youtube.com/watch?v=IK2ury61ALo"><img src="https://img.youtube.com/vi/IK2ury61ALo/0.jpg" alt=""></a></p>
+<p>▼プレイ動画<br>
+<a href="https://www.youtube.com/watch?v=qhhHg3uN57c"><img src="https://img.youtube.com/vi/qhhHg3uN57c/0.jpg" alt="プレイ動画"></a></p>
+<hr>
+<ul>
+<li><strong>ゲームジャンル</strong><br>
+3Dアクションゲーム</li>
+<li><strong>ゲーム内容</strong><br>
+ 騎士を操作してダンジョン内の敵を倒し、ギミックをクリアして、ダンジョンの奥にいる支配者を倒す。</li>
+</ul>
+<hr>
+<ul>
+<li><strong>使用ゲームエンジン</strong><br>
+学校内製のゲームエンジンを使用</li>
+<li><strong>使用ツール</strong>
+<ul>
+<li>Visual Studio 2022</li>
+<li>3dsMax 2023</li>
+<li>Adobe Photoshop 2023</li>
+<li>Effekseer</li>
+</ul>
+</li>
+<li><strong>使用言語</strong>
+<ul>
+<li>C++</li>
+<li>HLSL</li>
+</ul>
+</li>
+<li><strong>開発環境</strong>
+<ul>
+<li>Windows11</li>
+<li>DirectX12</li>
+</ul>
+</li>
+<li><strong>開発期間</strong><br>
+2022年9月～2023年1月</li>
+<li><strong>制作人数</strong><br>
+1人</li>
+</ul>
+<p>⇧<a href="#%E7%9B%AE%E6%AC%A1">目次に戻る</a></p>
+<h2 id="2-%E6%93%8D%E4%BD%9C%E8%AA%AC%E6%98%8E"><strong>2. 操作説明</strong></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">操作</th>
+<th style="text-align:center">ボタン</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ジャンプ</td>
+<td style="text-align:center">A</td>
+</tr>
+<tr>
+<td style="text-align:center">近接攻撃</td>
+<td style="text-align:center">B</td>
+</tr>
+<tr>
+<td style="text-align:center">魔法攻撃</td>
+<td style="text-align:center">X</td>
+</tr>
+<tr>
+<td style="text-align:center">移動</td>
+<td style="text-align:center">Lスティック</td>
+</tr>
+<tr>
+<td style="text-align:center">ダッシュ</td>
+<td style="text-align:center">Lスティック+RB</td>
+</tr>
+<tr>
+<td style="text-align:center">カメラ操作</td>
+<td style="text-align:center">Rスティック</td>
+</tr>
+</tbody>
+</table>
+<p>⇧<a href="#%E7%9B%AE%E6%AC%A1">目次に戻る</a></p>
+<h2 id="3-%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89"><strong>3. ソースコード</strong></h2>
+<details>
+  <summary>作成したソースコード</summary>
+<ul>
+<li>Background.cpp
+<ul>
+<li>Background.h</li>
+</ul>
+</li>
+<li>Boss.cpp
+<ul>
+<li>Boss.h</li>
+</ul>
+</li>
+<li>CheckPoint.cpp
+<ul>
+<li>CheckPoint.h</li>
+</ul>
+</li>
+<li>Fade.cpp
+<ul>
+<li>Fade.h</li>
+</ul>
+</li>
+<li>FireGimmic.cpp
+<ul>
+<li>FireGimmic.h</li>
+</ul>
+</li>
+<li>Game.cpp
+<ul>
+<li>Game.h</li>
+</ul>
+</li>
+<li>GameCamera.cpp
+<ul>
+<li>GameCamera.h</li>
+</ul>
+</li>
+<li>MagicBall.cpp
+<ul>
+<li>MagicBall.h</li>
+</ul>
+</li>
+<li>MagicThunder.cpp
+<ul>
+<li>MagicThunder.h</li>
+</ul>
+</li>
+<li>Map.cpp
+<ul>
+<li>Map.h</li>
+</ul>
+</li>
+<li>MovingFloor.cpp
+<ul>
+<li>MovingFloor.h</li>
+</ul>
+</li>
+<li>MovingFloorZ.cpp
+<ul>
+<li>MovingFloorZ.h</li>
+</ul>
+</li>
+<li>MushRoomMan.cpp
+<ul>
+<li>MushRoomMan.h</li>
+</ul>
+</li>
+<li>Player.cpp
+<ul>
+<li>Player.h</li>
+</ul>
+</li>
+<li>SeesawFloor.cpp
+<ul>
+<li>SeesawFloor.h</li>
+</ul>
+</li>
+<li>StoneMonster.cpp
+<ul>
+<li>StoneMonster.h</li>
+</ul>
+</li>
+<li>Title.cpp
+<ul>
+<li>Title.h</li>
+</ul>
+</li>
+</ul>
+</details>
+<details>
+<summary>改造したソースコード</summary>
+<ul>
+<li>PhysicsStaticObject.h
+<ul>
+<li>SetRotation関数を追加</li>
+</ul>
+</li>
+<li>RenderingEngine.h
+<ul>
+<li>m_grayscale変数を追加</li>
+</ul>
+</li>
+<li>DeferredLighting.fx
+<ul>
+<li>406行目～412行目のグレースケールの処理を追加</li>
+</ul>
+</li>
+<li>PBRLighting_struct.h
+<ul>
+<li>59行目のgrayscale変数を追加</li>
+</ul>
+</li>
+</ul>
+</details>
+<p>⇧<a href="#%E7%9B%AE%E6%AC%A1">目次に戻る</a></p>
+<h2 id="4-%E3%82%B9%E3%83%86%E3%83%BC%E3%82%B8"><strong>4. ステージ</strong></h2>
+<p>ステージは以下の3つで構成されています。
+<img src="https://user-images.githubusercontent.com/121418275/218459536-4ac91d27-a9a8-494f-b0da-e98795528765.png" alt="ステージ構成">
+① 雑魚敵との戦闘<br>
+② ステージギミックのあるアスレチックコース<br>
+③ ボス戦</p>
+<h2 id="5%E3%82%AE%E3%83%9F%E3%83%83%E3%82%AF%E7%B4%B9%E4%BB%8B"><strong>5.ギミック紹介</strong></h2>
+<h3 id="1-%E5%8B%95%E3%81%8F%E5%BA%8Abr">1. 動く床<br></h3>
+<ul>
+<li>床が前後や左右に移動します<br></li>
+<li>床の上に乗るとプレイヤーも一緒に移動します<br></li>
+<li>床の移動速度をプレイヤーの移動速度に加算して実装しました<br></li>
+</ul>
+<p>▼動画<br>
+<a href="https://www.youtube.com/watch?v=U87YqJSWFL8"><img src="https://img.youtube.com/vi/U87YqJSWFL8/0.jpg" alt="ギミック動く床"></a></p>
+<hr>
+<h3 id="2-%E6%B0%B7%E3%81%AE%E5%BA%8Abr">2. 氷の床<br></h3>
+<ul>
+<li>傾く床の上に乗ると傾きによってプレイヤーが滑ります</li>
+</ul>
+<p>▼動画<br>
+<a href="https://www.youtube.com/watch?v=FPwZ4YPGl8Y"><img src="https://img.youtube.com/vi/FPwZ4YPGl8Y/0.jpg" alt="ギミック氷の床"></a></p>
+<hr>
+<h3 id="3-%E7%82%8E%E3%81%AE%E6%9F%B1">3. 炎の柱</h3>
+<ul>
+<li>一定間隔で炎が吹き出します</li>
+<li>プレイヤーが当たるとHPが減少していきます<br></li>
+</ul>
+<p>▼動画<br>
+<a href="https://www.youtube.com/watch?v=pE7BFnn8gUU"><img src="https://img.youtube.com/vi/pE7BFnn8gUU/0.jpg" alt="ギミック炎の柱"></a></p>
+<p>⇧<a href="#%E7%9B%AE%E6%AC%A1">目次に戻る</a></p>
+<h2 id="6%E6%8A%80%E8%A1%93%E7%9A%84%E8%A6%81%E7%B4%A0"><strong>6.技術的要素</strong></h2>
+<h3 id="1-%E9%9D%99%E7%9A%84%E7%89%A9%E7%90%86%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E5%9B%9E%E8%BB%A2">1. 静的物理オブジェクトの回転</h3>
+<p> ステージとプレイヤーの当たり判定は静的物理オブジェクトとキャラクターコントローラーで取っています。<br>
+ そのため、モデルだけ回転させると、意図した挙動にならないため、静的物理オブジェクトも回転させる必要があります。<br>
+ しかし、既存のエンジンには静的物理オブジェクトを回転させるための処理がなかったため、PhysicsStaticObject.hのSetPosition関数を参考にSetRotation関数を作成しました。<br></p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SetRotation</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Quaternion&amp; rot)</span>
+</span>{
+  <span class="hljs-keyword">auto</span>&amp; btTrans = m_rigidBody.GetBody()-&gt;getWorldTransform();
+  btQuaternion btRot;
+  btRot = btQuaternion(rot.x,rot.y,rot.z,rot.w);
+  btTrans.setRotation(btRot);
+}
+</div></code></pre>
+<hr>
+<h3 id="2%E3%83%97%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC%E3%81%AE%E6%BB%91%E3%82%8B%E5%87%A6%E7%90%86">2.プレイヤーの滑る処理</h3>
+<p> 床の回転の値(seesawFloor-&gt;GetRotation())を取得して、床の回転の値にスカラーを乗算し、プレイヤーの移動速度(m_oldMoveSpeed)に加算することで実装しました。</p>
+<pre class="hljs"><code><div>float rot = seesawFloor-&gt;GetRotation() * 500.0f;
+m_oldMoveSpeed.z += rot;
+</div></code></pre>
+<hr>
+<h3 id="3%E3%82%B0%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB">3.グレースケール</h3>
+<p> プレイヤーが死亡したときに、3Dモデルがグレースケールになるようにしました。<br>
+ 徐々にグレースケールになるようにするために、線形補間を使って実装しました。<br></p>
+<pre class="hljs"><code><div>float Y = finalColor.r * 0.29891f + finalColor.g * 0.58661f + finalColor.b * 0.11448f;
+float fullcolor = 1.0f - light.grayscale;
+
+finalColor.r = (finalColor.r * fullcolor) + (Y * light.grayscale);
+finalColor.g = (finalColor.g * fullcolor) + (Y * light.grayscale);
+finalColor.b = (finalColor.b * fullcolor) + (Y * light.grayscale);
+</div></code></pre>
+<p>▼動画<br>
+<a href="https://www.youtube.com/watch?v=3g6UbGYMKmM"><img src="https://img.youtube.com/vi/3g6UbGYMKmM/0.jpg" alt="グレースケール"></a></p>
+<blockquote>
+<p>参考にしたサイト<br>
+<a href="https://yun.cup.com/directx11032.html">DirectX11プログラミング-グレースケールシェーダー-</a></p>
+</blockquote>
+<hr>
+<h3 id="4%E3%82%B9%E3%83%AD%E3%83%BC%E6%BC%94%E5%87%BA">4.スロー演出</h3>
+<p> ボスを倒したときにスローの演出をいれました。
+これにより強敵を倒したということを感じやすくできたと思います。<br>
+FPSを一時的に落とすことで実装しました。</p>
+<p>▼動画<br>
+<a href="https://www.youtube.com/watch?v=GJv1pbQCk0Y"><img src="https://img.youtube.com/vi/GJv1pbQCk0Y/0.jpg" alt="スローモーション"></a></p>
+<hr>
+<h3 id="5%E3%83%9F%E3%83%8B%E3%83%9E%E3%83%83%E3%83%97">5.ミニマップ</h3>
+<p> 右上に敵やギミックを表示するミニマップを実装しました。<br>
+ 実装の方法は以下の通りです。<br></p>
+<ol>
+<li>マップの中心にしたいオブジェクトの座標(プレイヤー)からマップに表示したいオブジェクトの座標(敵やギミック)に向かうベクトルを求める。</li>
+<li>1で求めたベクトルが一定以上だったら表示しないようにする</li>
+<li>1で求めたベクトルの大きさ(長さ)を求める</li>
+</ol>
+<pre class="hljs"><code><div><span class="hljs-keyword">float</span> length = diff.Length();
+</div></code></pre>
+<ol start="4">
+<li>カメラの前方向ベクトルとクォータニオンを作成する</li>
+</ol>
+<pre class="hljs"><code><div>Vector3 forward = g_camera3D-&gt;GetForward();
+Quaternion rot;
+</div></code></pre>
+<ol start="5">
+<li>atan2関数でカメラの前方向ベクトルの-X軸とZ軸を引数にして角度を求め、4で作成したクォータニオンに回転を設定する</li>
+</ol>
+<pre class="hljs"><code><div>rot.SetRotationY(<span class="hljs-built_in">atan2</span>(-forward.x, forward.z));
+</div></code></pre>
+<ol start="6">
+<li>1のベクトルに5で設定した回転を適用する</li>
+<li>1で求めたベクトルを正規化する</li>
+<li>7で正規化したベクトルに ベクトルの大きさ ✕ マップの大きさ ✕ マップの表示距離制限 を乗算してマップ座標系に変換する</li>
+</ol>
+<pre class="hljs"><code><div>diff *= length * MAP_RADIUS / LIMITED_RANGE_IMAGE;
+</div></code></pre>
+<ol start="9">
+<li>マップの中央座標と8で求めたベクトルを加算する</li>
+</ol>
+<pre class="hljs"><code><div>mapPosition = Vector3(m_mapCenterPosition.x + diff.x, m_mapCenterPosition.y + diff.z, <span class="hljs-number">0.0f</span>);
+</div></code></pre>
+<p>▼動画<br>
+<a href="https://www.youtube.com/watch?v=m2Fe7SGCH8c"><img src="https://img.youtube.com/vi/m2Fe7SGCH8c/0.jpg" alt="ミニマップ"></a></p>
+<p>⇧<a href="#%E7%9B%AE%E6%AC%A1">目次に戻る</a></p>
+
+</body>
+</html>
